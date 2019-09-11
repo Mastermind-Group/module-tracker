@@ -1,0 +1,18 @@
+@media (max-width: 700px)   {
+    .profile{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+
+        .smart-goals{
+            min-width: 100%;
+          
+        }
+        .profile-assignments{
+        
+            min-width: 100%;
+         
+        }
+    }
+    }
+    
