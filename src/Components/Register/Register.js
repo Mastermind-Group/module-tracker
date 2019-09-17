@@ -10,7 +10,7 @@ import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import Loader from 'react-loader-spinner'
-import Logo1 from '../Images/final.png'
+
 
 import './register.scss'
 
@@ -63,13 +63,8 @@ const Register = props => {
       <CssBaseline />
       <p style={{ width: '100%' }}></p>
       <Paper className={classes.paper} >
-        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
-        {/* <img
-          alt='Lambda Logo'
-          style={lambdaLogo}
-          src={Logo}
-        /> */}
-        {/* <span>Career Readiness Portal</span> */}
+
+
 
         <form
           onSubmit={(e) => submit(e)}
