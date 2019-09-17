@@ -103,7 +103,9 @@ function LogIn(props) {
           </FormControl>
 
           <SignInButton>Sign in</SignInButton>
+
         </form>
+
         <SignInButton onClick={() => props.blockstackConfig.redirectToSignIn()}>Sign in with Blockstack</SignInButton>
 
         <Flex>
