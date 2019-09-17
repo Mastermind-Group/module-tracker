@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 
-import Logo from '../../Images/Lambda_Logo_White.png'
 
 export default props => {
 
@@ -32,13 +31,7 @@ export default props => {
                 noWrap
                 className={props.classes.title}
             >
-                <img
-                    alt="Lambda Logo"
-                    src={Logo}
-                    style={{
-                        height: 'auto',
-                        width: '100px'
-                    }} />
+
                 <p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p>
             </Typography>
 

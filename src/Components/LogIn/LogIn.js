@@ -8,13 +8,18 @@ import Loader from 'react-loader-spinner'
 import { login } from "../../Actions"
 import styles from './styles'
 
+
+
+
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import GoogleLogin from 'react-google-login'
-import Logo1 from '../Images/final.png'
+
 
 import './login.scss'
 
 function LogIn(props) {
+
+
 
   const { fields, handleChanges, submit } = useForm(handleSubmit)
 
@@ -66,7 +71,7 @@ function LogIn(props) {
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
-        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
+
         <form
           onSubmit={(e) => submit(e)}
           className={classes.form}
@@ -129,13 +134,7 @@ function LogIn(props) {
               cookiePolicy={'single_host_origin'}
             />
           </div>
-
         </form>
-
-        <div style={{ marginTop: '25px' }}>
-          <button onClick={() => props.blockstackConfig.redirectToSignIn()}>Chackstock</button>
-        </div>
-
         <p>Don't have an account?</p>
         <NavLink to="/register">Register Here</NavLink>
       </Paper>
