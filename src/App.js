@@ -2,8 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
-import LogIn from './Components/LogIn'
-import Register from './Components/Register'
+import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
 const App = props => {

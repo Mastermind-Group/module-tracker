@@ -5,14 +5,15 @@ import GoogleLogin from 'react-google-login'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 
-import styles from './styles'
+import mainScomp from '../GlobalStyles'
+import styles, { scomp } from './styles'
 import { register, createGoogleUser } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import Loader from 'react-loader-spinner'
-import Logo1 from '../Images/final.png'
 
-import './register.scss'
+const { Flex } = mainScomp
+const { Oauth, Login } = scomp
 
 const Register = props => {
 
@@ -61,15 +62,10 @@ const Register = props => {
 
     <main className={classes.main}>
       <CssBaseline />
-      <p style={{ width: '100%' }}></p>
-      <Paper className={classes.paper} >
-        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
-        {/* <img
-          alt='Lambda Logo'
-          style={lambdaLogo}
-          src={Logo}
-        /> */}
-        {/* <span>Career Readiness Portal</span> */}
+
+      <Login>
+
+
 
         <form
           onSubmit={(e) => submit(e)}
@@ -115,22 +111,26 @@ const Register = props => {
           >Register</Button>
 
           {!props.admin &&
-            <div style={{ marginTop: '25px' }}>
+            <Flex>
               <GoogleLogin
                 clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
                 render={renderProps => (
-                  <img className={'oauth'} onClick={renderProps.onClick} alt='Google Logo' src={GLogo} />
+                  <Oauth
+                    onClick={renderProps.onClick}
+                    alt='Google Logo'
+                    src={GLogo}
+                  />
                 )}
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
               />
-            </div>}
+            </Flex>}
         </form>
 
         <p>Already have an account?</p>
         <NavLink to='/'>Log In</NavLink>
-      </Paper>
+      </Login>
     </main>
 
   )

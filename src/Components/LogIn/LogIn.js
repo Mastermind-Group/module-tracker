@@ -1,21 +1,19 @@
 import React, { useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { connect } from "react-redux"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
+import { CssBaseline, FormControl, Input, InputLabel, Paper, withStyles } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
 import { login } from "../../Actions"
-import scomp from '../GlobalStyles'
-import styles, { Oauth } from './styles'
+import mainScomp from '../GlobalStyles'
+import styles, { scomp } from './styles'
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import GoogleLogin from 'react-google-login'
-import Logo1 from '../Images/final.png'
 
-import './login.scss'
-
-const { Flex } = scomp
+const { Flex, Button } = mainScomp
+const { Oauth, Login, SignInButton } = scomp
 
 function LogIn(props) {
 
@@ -68,12 +66,8 @@ function LogIn(props) {
 
     <main className={classes.main}>
       <CssBaseline />
-      <Paper className={classes.paper}>
-        <img alt='Logo' style={{ height: '175px', width: '175px' }} src={Logo1} />
-        <form
-          onSubmit={(e) => submit(e)}
-          className={classes.form}
-        >
+      <Login>
+        <form onSubmit={(e) => submit(e)}>
 
           <FormControl
             margin="normal"
@@ -108,14 +102,7 @@ function LogIn(props) {
             />
           </FormControl>
 
-          <Button
-            variant="outlined"
-            color="secondary"
-            className={classes.submit}
-            type="submit"
-            fullWidth
-            style={{ padding: '10px' }}
-          >Sign in</Button>
+          <SignInButton>Sign in</SignInButton>
 
           <Flex>
             <GoogleLogin
@@ -140,7 +127,7 @@ function LogIn(props) {
 
         <p>Don't have an account?</p>
         <NavLink to="/register">Register Here</NavLink>
-      </Paper>
+      </Login>
     </main>
 
   )

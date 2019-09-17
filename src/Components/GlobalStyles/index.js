@@ -29,10 +29,12 @@ export const buttonSize = {
 export default {
 
     Flex: styled.div`
-        display: 'flex';
+        display: flex;
         background: ${
         props =>
-            props.primary ? `${colors.pbg}` : `${colors.sbg}`
+            props.primary ? colors.pbg :
+                props.secondary ? colors.sbg :
+                    'inherit'
         };
         justify-content: ${
         props =>
@@ -60,14 +62,14 @@ export default {
         background: ${
         props =>
             props.active ? 'grey' :
-                props.primary ? `${colors.primary}` :
-                    `${colors.secondary}`
+                props.primary ? colors.primary :
+                    colors.secondary
         };
         padding: ${
         props =>
-            props.active ? `${buttonSize.active.small}` :
-                props.small ? `${buttonSize.small}` :
-                    `${buttonSize.medium}`
+            props.active ? buttonSize.active.small :
+                props.small ? buttonSize.small :
+                    buttonSize.medium
         };
         border-radius: ${
         props =>
@@ -89,6 +91,6 @@ export default {
             cursor: ${props => props.active ? 'default' : 'pointer'};
             transition: .4s;
         }
-`
+`,
 
 }

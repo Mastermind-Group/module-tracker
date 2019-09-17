@@ -1,3 +1,4 @@
 import LogIn from "./LogIn"
+import Register from './Register'
 
-export default LogIn
+export { LogIn, Register }
