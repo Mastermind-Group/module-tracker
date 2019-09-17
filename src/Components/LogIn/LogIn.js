@@ -103,26 +103,28 @@ function LogIn(props) {
           </FormControl>
 
           <SignInButton>Sign in</SignInButton>
-
-          <Flex>
-            <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              render={renderProps => (
-                <Oauth
-                  onClick={renderProps.onClick}
-                  alt='Google Logo' src={GLogo}
-                />
-              )}
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </Flex>
-
         </form>
+        <SignInButton onClick={() => props.blockstackConfig.redirectToSignIn()}>Sign in with Blockstack</SignInButton>
+
+        <Flex>
+          <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            render={renderProps => (
+              <Oauth
+                onClick={renderProps.onClick}
+                alt='Google Logo' src={GLogo}
+              />
+            )}
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+        </Flex>
+
+
 
         <div style={{ marginTop: '25px' }}>
-          <button onClick={() => props.blockstackConfig.redirectToSignIn()}>Chackstock</button>
+
         </div>
 
         <p>Don't have an account?</p>
