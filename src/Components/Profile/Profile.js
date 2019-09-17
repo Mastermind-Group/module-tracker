@@ -56,8 +56,8 @@ const Profile = props => {
 						marginBottom: '30px'
 					}}
 				/>
-				<p>Student McStudent</p>
-				<p>Web18</p>
+				<p>Learning Individual</p>
+
 			</div>
 
 			<div
@@ -110,7 +110,7 @@ const Profile = props => {
 
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
-								Lessons: 2/12
+								Lessons: 12/12
 							</Paper>
 						</Grid>
 
@@ -131,7 +131,7 @@ const Profile = props => {
 
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
-								Resume: Complete
+								All Training: Complete
 							</Paper>
 						</Grid>
 
@@ -152,7 +152,7 @@ const Profile = props => {
 
 						<Grid item xs={12} sm={6}>
 							<Paper className={classes.paper} style={{ padding: '23px 10px', margin: '5px' }}>
-								Portfolio: *In Progress*
+								Profile: *In Progress*
 							</Paper>
 						</Grid>
 
