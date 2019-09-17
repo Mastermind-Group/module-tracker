@@ -131,6 +131,11 @@ function LogIn(props) {
           </div>
 
         </form>
+
+        <div style={{ marginTop: '25px' }}>
+          <button onClick={() => props.blockstackConfig.redirectToSignIn()}>Chackstock</button>
+        </div>
+
         <p>Don't have an account?</p>
         <NavLink to="/register">Register Here</NavLink>
       </Paper>
