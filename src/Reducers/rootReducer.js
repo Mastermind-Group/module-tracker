@@ -1,10 +1,17 @@
 import { SUCCESS, GETJOBS, REQUEST } from '../Actions'
+import { initBlockstack } from 'react-blockstack'
+import { AppConfig, UserSession } from 'blockstack'
+
+const appConfig = new AppConfig(["store_write"])
+const userSession = new UserSession({ appConfig: appConfig })
+initBlockstack(appConfig)
 
 const initialState = {
 
     loggingIn: false,
     loggedIn: false,
-    jobs: []
+    jobs: [],
+    blockstackConfig: userSession
 
 }
 
