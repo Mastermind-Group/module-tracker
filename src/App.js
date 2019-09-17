@@ -5,13 +5,15 @@ import Cookies from 'js-cookie'
 import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
+import { Flex } from './Components/GlobalStyles'
+
 const App = props => {
 
   window.addEventListener('beforeunload', () => Cookies.remove('location'))
 
   return (
 
-    <div className="App">
+    <Flex column container>
       <Switch>
 
         <Route exact path="/"
@@ -31,7 +33,7 @@ const App = props => {
         <PrivateRoute path="/admin/dashboard" />
 
       </Switch>
-    </div>
+    </Flex>
 
   )
 }

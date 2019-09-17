@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const colors = {
+const colors = {
 
     // general colors
     primary: '#0c1323',
@@ -12,7 +12,7 @@ export const colors = {
 
 }
 
-export const buttonSize = {
+const buttonSize = {
 
     active: {
         small: '1rem 1.2rem',
@@ -26,39 +26,38 @@ export const buttonSize = {
 
 }
 
-export default {
-
-    Flex: styled.div`
+const Flex = styled.div`
         display: flex;
         background: ${
-        props =>
-            props.primary ? colors.pbg :
-                props.secondary ? colors.sbg :
-                    'inherit'
-        };
+    props =>
+        props.primary ? colors.pbg :
+            props.secondary ? colors.sbg :
+                'inherit'
+    };
         justify-content: ${
-        props =>
-            props.spaceAJ ? 'space-around' :
-                props.spaceBJ ? 'space-between' :
-                    props.spaceEJ ? 'space-evenly' :
-                        props.startJ ? 'flex-start' :
-                            props.endJ ? 'flex-end' :
-                                'center'
-        };
+    props =>
+        props.spaceAJ ? 'space-around' :
+            props.spaceBJ ? 'space-between' :
+                props.spaceEJ ? 'space-evenly' :
+                    props.startJ ? 'flex-start' :
+                        props.endJ ? 'flex-end' :
+                            'center'
+    };
         align-items: ${
-        props =>
-            props.spaceAA ? 'space-around' :
-                props.spaceBA ? 'space-between' :
-                    props.spaceEA ? 'space-evenly' :
-                        props.startA ? 'flex-start' :
-                            props.endA ? 'flex-end' :
-                                'center'
-        };
+    props =>
+        props.spaceAA ? 'space-around' :
+            props.spaceBA ? 'space-between' :
+                props.spaceEA ? 'space-evenly' :
+                    props.startA ? 'flex-start' :
+                        props.endA ? 'flex-end' :
+                            'center'
+    };
         flex-direction: ${props => props.column ? 'column' : 'row'};
         width: 100%;
+        ${props => props.container && 'height: 100vh'};
 `,
 
-    Button: styled.button`
+    Button = styled.button`
         background: ${
         props =>
             props.active ? 'grey' :
@@ -91,6 +90,11 @@ export default {
             cursor: ${props => props.active ? 'default' : 'pointer'};
             transition: .4s;
         }
-`,
+`
 
+export {
+    Button,
+    Flex,
+    colors,
+    buttonSize
 }

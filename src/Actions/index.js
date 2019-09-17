@@ -195,6 +195,14 @@ const delJob = id => dispatch => {
 
 }
 
+const blockstackLogin = bs => dispatch => {
+
+	dispatch({ type: REQUEST })
+
+	bs.redirectToSignIn()
+
+}
+
 export {
 	REQUEST,
 	SUCCESS,
@@ -205,5 +213,6 @@ export {
 	getJobs,
 	addJob,
 	updateJob,
-	delJob
+	delJob,
+	blockstackLogin,
 }
