@@ -1,26 +1,40 @@
 import styled from 'styled-components'
 
-export default _ => ({
+export const colors = {
 
-    colors: {
+    // general colors
+    primary: '#0c1323',
+    secondary: '#f8f8f8',
 
-        // general colors
-        primary: '#0c1323',
-        secondary: '#f8f8f8',
+    // backgrounds
+    pbg: '#f8f8f8',
+    sbg: '#0c1323',
 
-        // backgrounds
-        pbg: '#f8f8f8',
-        sbg: '#0c1323',
+}
 
+export const buttonSize = {
+
+    active: {
+        small: '1rem 1.2rem',
+        medium: '1.1rem 2.4rem',
+        large: '1.8rem 2.4rem'
     },
+    tiny: '0 2.5rem',
+    small: '1.1rem 1.2rem',
+    medium: '1.2rem 2.4rem',
+    large: '2rem 2.4rem'
+
+}
+
+export default {
 
     Flex: styled.div`
-    display: 'flex';
-    background: ${
+        display: 'flex';
+        background: ${
         props =>
             props.primary ? `${colors.pbg}` : `${colors.sbg}`
-        },
-    justify-content: ${
+        };
+        justify-content: ${
         props =>
             props.spaceAJ ? 'space-around' :
                 props.spaceBJ ? 'space-between' :
@@ -29,7 +43,7 @@ export default _ => ({
                             props.endJ ? 'flex-end' :
                                 'center'
         };
-    align-items: ${
+        align-items: ${
         props =>
             props.spaceAA ? 'space-around' :
                 props.spaceBA ? 'space-between' :
@@ -38,43 +52,43 @@ export default _ => ({
                             props.endA ? 'flex-end' :
                                 'center'
         };
-    flex-direction: ${props => props.column ? 'column' : 'row'};
-    width: 100%;
+        flex-direction: ${props => props.column ? 'column' : 'row'};
+        width: 100%;
 `,
 
     Button: styled.button`
-    background: ${
+        background: ${
         props =>
             props.active ? 'grey' :
                 props.primary ? `${colors.primary}` :
                     `${colors.secondary}`
-        }
-    padding: ${
+        };
+        padding: ${
         props =>
             props.active ? `${buttonSize.active.small}` :
                 props.small ? `${buttonSize.small}` :
                     `${buttonSize.medium}`
-        }
-    border-radius: ${
+        };
+        border-radius: ${
         props =>
             props.first ? '5px 0 0 5px' :
                 props.last ? '0 5px 5px 0' :
                     props.middle ? '0' :
                         '5px'
-        }
-    width: ${
+        };
+        width: ${
         props =>
             props.half ? '50%' :
                 props.third ? '30%' :
                     'max-width'
-        }
-    outline: none;
+        };
+        outline: none;
 
-    &:hover {
-        transform: ${props => props.active ? 'none' : 'scale(1.03)'};
-        cursor: ${props => props.active ? 'default' : 'pointer'};
-        transition: .4s;
-    }
+        &:hover {
+            transform: ${props => props.active ? 'none' : 'scale(1.03)'};
+            cursor: ${props => props.active ? 'default' : 'pointer'};
+            transition: .4s;
+        }
 `
 
-})
+}

@@ -6,8 +6,6 @@ import LogIn from './Components/LogIn'
 import Register from './Components/Register'
 import PrivateRoute from './Components/PrivateRoute'
 
-import './App.scss'
-
 const App = props => {
 
   window.addEventListener('beforeunload', () => Cookies.remove('location'))

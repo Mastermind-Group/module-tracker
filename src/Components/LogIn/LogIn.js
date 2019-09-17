@@ -6,13 +6,16 @@ import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
 import { login } from "../../Actions"
-import styles from './styles'
+import scomp from '../GlobalStyles'
+import styles, { Oauth } from './styles'
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import GoogleLogin from 'react-google-login'
 import Logo1 from '../Images/final.png'
 
 import './login.scss'
+
+const { Flex } = scomp
 
 function LogIn(props) {
 
@@ -114,12 +117,11 @@ function LogIn(props) {
             style={{ padding: '10px' }}
           >Sign in</Button>
 
-          <div style={{ marginTop: '25px' }}>
+          <Flex>
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
               render={renderProps => (
-                <img
-                  className={'oauth'}
+                <Oauth
                   onClick={renderProps.onClick}
                   alt='Google Logo' src={GLogo}
                 />
@@ -128,7 +130,7 @@ function LogIn(props) {
               onFailure={responseGoogle}
               cookiePolicy={'single_host_origin'}
             />
-          </div>
+          </Flex>
 
         </form>
 
