@@ -7,7 +7,7 @@ export default theme => ({
     },
     toolbar: {
         paddingRight: 24,
-        backgroundColor: variables.lambdaRed
+        backgroundColor: '#0c1323'
     },
     toolbarIcon: {
         display: 'flex',

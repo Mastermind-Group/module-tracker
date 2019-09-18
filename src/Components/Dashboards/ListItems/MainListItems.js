@@ -14,7 +14,7 @@ export default props => {
 
             {!props.admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/profile">
                 <ListItem button >
-                    <ListItemIcon style={{ color: "#bb1333" }}>
+                    <ListItemIcon style={{ color: "#0c1323" }}>
                         <Tooltip title="Home" placement='right'>
                             <HomeIcon />
                         </Tooltip>
@@ -25,7 +25,7 @@ export default props => {
 
             {!props.admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/assignments">
                 <ListItem button >
-                    <ListItemIcon style={{ color: "#bb1333" }}>
+                    <ListItemIcon style={{ color: "#0c1323" }}>
                         <Tooltip title="Training Modules" placement='right'>
                             <AssignmentIcon />
                         </Tooltip>
@@ -36,7 +36,7 @@ export default props => {
 
             <Link style={{ textDecoration: 'none' }} to={props.admin ? '/admin/dashboard/calendar' : "/dashboard/calendar"}>
                 <ListItem button>
-                    <ListItemIcon style={{ color: "#bb1333" }}>
+                    <ListItemIcon style={{ color: "#0c1323" }}>
                         <Tooltip title='Calendar' placement='right'>
                             <CalendarIcon />
                         </Tooltip>
@@ -47,7 +47,7 @@ export default props => {
 
             {!props.admin && (<Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
                 <ListItem button>
-                    <ListItemIcon style={{ color: "#bb1333" }}>
+                    <ListItemIcon style={{ color: "#0c1323" }}>
                         <Tooltip title='Job Tracker' placement='right'>
                             <AppliedIcon />
                         </Tooltip>
@@ -58,7 +58,7 @@ export default props => {
 
             <Link style={{ textDecoration: 'none' }} to={props.admin ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>
                 <ListItem button>
-                    <ListItemIcon style={{ color: "#bb1333" }}>
+                    <ListItemIcon style={{ color: "#0c1323" }}>
                         <Tooltip title='Endorsement Verification' placement='right'>
                             <CheckIcon />
                         </Tooltip>
