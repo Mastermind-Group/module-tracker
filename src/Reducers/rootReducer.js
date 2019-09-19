@@ -11,8 +11,7 @@ const initialState = {
     loggingIn: false,
     loggedIn: false,
     jobs: [],
-    blockstackConfig: userSession,
-    bsUser: userSession.isSignInPending() && userSession.isUserSignedIn()
+    blockstackConfig: userSession
 
 }
 
@@ -28,8 +27,7 @@ const rootReducer = (state = initialState, action) => {
         case BS_REQUEST:
             return {
                 ...state,
-                loggingIn: true,
-                bsUser: true
+                loggingIn: true
             }
 
         case SUCCESS:

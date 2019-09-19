@@ -181,7 +181,7 @@ const bsLogin = bs => dispatch => {
 				if (!userData.username) {
 					throw new Error("Username required")
 				}
-				console.log(userData.username)
+				console.log("bsLogin userdata", userData)
 			})
 			.catch(err => console.error(err))
 	}
