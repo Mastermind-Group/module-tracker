@@ -10,7 +10,7 @@ const Login = styled.div`
         align-items: center;
         border-radius: 5px;
         width: 425px;
-        max-height: 100vh;
+        max-height: 100vh || max-content;
     `,
     Oauth = styled.img`
         width: 40px;

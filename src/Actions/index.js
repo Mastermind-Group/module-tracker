@@ -75,36 +75,6 @@ const login = (creds) => dispatch => {
 		.catch(err => handleError(err))
 }
 
-const createGoogleUser = google => dispatch => {
-	axios.post(url, {
-		query: `
-      mutation{
-        createGoogleUser(googleData: {
-          token: "${google.token}", 
-          image: "${google.image}", 
-          email: "${google.email}", 
-          name: "${google.name}", 
-          password: "${google.password}"
-        }){
-          _id
-          token
-          tokenExp
-        }
-	  }
-	  `
-	})
-		.then(res => {
-			console.log('second response', res)
-			const { token } = res.data.data.createGoogleUser
-			Cookies.set('token', token)
-			dispatch({ type: SUCCESS, payload: token })
-			if (token) {
-				window.location.pathname = '/dashboard/profile'
-			}
-		})
-		.catch(err => handleError(err))
-}
-
 const getJobs = () => dispatch => {
 
 	axioken().post(url, {
@@ -224,7 +194,6 @@ export {
 	GETJOBS,
 	register,
 	login,
-	createGoogleUser,
 	getJobs,
 	addJob,
 	updateJob,
