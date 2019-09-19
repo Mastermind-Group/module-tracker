@@ -5,15 +5,18 @@ import { FormControl, Input, InputLabel } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
-import { login, blockstackLogin } from "../../Actions"
+import { login, bsLogin, bsRedirect } from "../../Actions"
 
 import GLogo from '../Images/G-Sign-In-Normal.png'
 import GoogleLogin from 'react-google-login'
+import Logo from '../Images/logo.png'
 
 import { Flex } from '../GlobalStyles'
-import { Oauth, Login, SignInButton } from './styles'
+import { Oauth, Login, SignInButton, LogoImg } from './styles'
 
 function LogIn(props) {
+
+  console.log(props.blockstackConfig)
 
   const { fields, handleChanges, submit } = useForm(handleSubmit)
 
@@ -43,7 +46,9 @@ function LogIn(props) {
   }
 
 
-  useEffect(() => creds && props.login(creds), [creds])
+  useEffect(_ => creds && props.login(creds), [creds])
+
+  useEffect(_ => props.bsUser && props.bsLogin(props.blockstackConfig), [])
 
   if (props.loggingIn) return (
 
@@ -62,6 +67,8 @@ function LogIn(props) {
   else return (
 
     <Login>
+
+      <LogoImg src={Logo} />
 
       <form onSubmit={(e) => submit(e)}>
 
@@ -103,7 +110,7 @@ function LogIn(props) {
       </form>
 
       <SignInButton
-        onClick={() => props.blockstackLogin(props.blockstackConfig)}
+        onClick={() => props.bsRedirect(props.blockstackConfig)}
       >Sign in with Blockstack</SignInButton>
 
       <Flex>
@@ -134,5 +141,5 @@ const mapStateToProps = state => ({ ...state })
 
 export default connect(
   mapStateToProps,
-  { login, blockstackLogin }
+  { login, bsLogin, bsRedirect }
 )(LogIn)

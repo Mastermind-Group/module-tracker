@@ -4,6 +4,7 @@ import axios from 'axios'
 import axioken, { handleError } from '../Utilities'
 
 const REQUEST = 'REQUEST',
+	BS_REQUEST = 'BS_REQUEST',
 	SUCCESS = 'SUCCESS',
 	GETJOBS = 'GETJOBS'
 
@@ -195,16 +196,30 @@ const delJob = id => dispatch => {
 
 }
 
-const blockstackLogin = bs => dispatch => {
+const bsRedirect = bs => dispatch => {
 
-	dispatch({ type: REQUEST })
+	dispatch({ type: BS_REQUEST })
 
 	bs.redirectToSignIn()
 
 }
 
+const bsLogin = bs => dispatch => {
+	if (!bs.isUserSignedIn() && bs.isSignInPending()) {
+		bs.handlePendingSignIn()
+			.then(userData => {
+				if (!userData.username) {
+					throw new Error("Username required")
+				}
+				console.log(userData.username)
+			})
+			.catch(err => console.error(err))
+	}
+}
+
 export {
 	REQUEST,
+	BS_REQUEST,
 	SUCCESS,
 	GETJOBS,
 	register,
@@ -214,5 +229,6 @@ export {
 	addJob,
 	updateJob,
 	delJob,
-	blockstackLogin,
+	bsRedirect,
+	bsLogin,
 }

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
-import { Flex } from './Components/GlobalStyles'
+import Global, { Flex } from './Components/GlobalStyles'
 
 const App = props => {
 
@@ -14,6 +14,7 @@ const App = props => {
   return (
 
     <Flex column container>
+      <Global />
       <Switch>
 
         <Route exact path="/"
