@@ -34,6 +34,22 @@ const Login = styled.div`
     `,
     LogoImg = styled.img`
         width: 25vh;
+    `,
+    EmailForm = styled.form`
+        display: inline-flex;
+        flex-direction: column;
+        position: relative;
+        vertical-align: top;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        width: 100%;
+
+        input {
+            position: relative;
+            border: 0;
+            border-bottom: 1.5px solid ${colors.accent};
+            outline: none;
+        }
     `
 
 export {
@@ -41,4 +57,5 @@ export {
     Login,
     SignInButton,
     LogoImg,
+    EmailForm
 }

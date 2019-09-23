@@ -35,7 +35,7 @@ const rootReducer = (state = initialState, action) => {
         case BS:
             return {
                 ...state,
-                bsUser: 'existing',
+                bsUser: true,
                 user: action.payload
             }
 
@@ -43,7 +43,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.payload,
-                bsUser: 'new'
+                bsUser: false
             }
 
         case SUCCESS:

@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import { connect } from "react-redux"
 import Loader from 'react-loader-spinner'
 
-import EmailModal from './EmailModal'
+import EmailModal from './Email'
 import { register, login, bsLogin, bsRedirect } from "../../Actions"
 import { colors } from '../GlobalStyles'
 import { Login, SignInButton, LogoImg } from './styles'
@@ -11,7 +11,7 @@ import Logo from '../Images/logo.png'
 
 function LogIn(props) {
 
-  const [fuckery, setFuckery] = useState(false)
+  const [isEmail, setIsEmail] = useState(false)
 
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
@@ -22,7 +22,7 @@ function LogIn(props) {
   useEffect(_ => {
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
       props.bsLogin(props.blockstackConfig)
-    if (props.bsUser) props.bsUser === 'existing' ?
+    if (props.bsUser) props.bsUser ?
       props.login(props.user) :
       props.register(props.user)
   }, [props.user])
@@ -44,7 +44,7 @@ function LogIn(props) {
 
   )
 
-  if (fuckery) return <Login><EmailModal /></Login>
+  if (isEmail) return <Login><EmailModal setIsEmail={setIsEmail} /></Login>
 
   else return (
 
@@ -58,7 +58,7 @@ function LogIn(props) {
 
       <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
       <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here</a></p>
-      <p>Prefer email? <a href='#' onClick={_ => setFuckery(true)}>Click here</a></p>
+      <p>Prefer email? <a href='#' onClick={_ => setIsEmail(true)}>Click here</a></p>
 
     </Login>
 

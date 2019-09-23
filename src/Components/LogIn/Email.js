@@ -2,9 +2,9 @@ import React from 'react'
 import { FormControl, Input, InputLabel } from '@material-ui/core'
 import { useForm } from 'customhooks'
 
-import { SignInButton } from './styles'
+import { SignInButton, EmailForm } from './styles'
 
-const EmailModal = props => {
+const Email = props => {
 
     const { fields, handleChanges, submit } = useForm(handleSubmit)
 
@@ -16,30 +16,19 @@ const EmailModal = props => {
 
         <form onSubmit={(e) => submit(e)}>
 
-            <FormControl
-                margin="normal"
-                required
-                fullWidth
-            >
+            <EmailForm required>
                 <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email</InputLabel>
-                <Input
+                <input
                     id="email"
                     name="email"
                     type='email'
-                    autoComplete="email"
                     onChange={handleChanges}
-                    autoFocus
-                    style={{ fontSize: 16 }}
                 />
-            </FormControl>
+            </EmailForm>
 
-            <FormControl
-                margin="normal"
-                required
-                fullWidth
-            >
+            <EmailForm required>
                 <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>Password</InputLabel>
-                <Input
+                <input
                     name="password"
                     type="password"
                     id="password"
@@ -47,7 +36,7 @@ const EmailModal = props => {
                     onChange={handleChanges}
                     style={{ fontSize: 18 }}
                 />
-            </FormControl>
+            </EmailForm>
 
             <SignInButton>Sign in Using E-mail</SignInButton>
 
@@ -56,4 +45,4 @@ const EmailModal = props => {
     )
 }
 
-export default EmailModal
+export default Email
