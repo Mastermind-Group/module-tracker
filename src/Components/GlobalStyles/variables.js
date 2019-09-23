@@ -3,7 +3,7 @@ const colors = {
     // general colors
     primary: '#0c1323',
     secondary: '#f8f8f8',
-    accent: '#a5a7af',
+    accent: '#999',
 
     // backgrounds
     pbg: '#f8f8f8',

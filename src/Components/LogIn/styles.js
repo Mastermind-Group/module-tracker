@@ -25,7 +25,7 @@ const Login = styled.div`
     SignInButton = styled.button`
         width: 100%;
         padding: ${buttonSize.medium};
-        color: white;
+        color: ${colors.secondary};
         background: ${colors.sbg};
 
         &:hover {
@@ -35,7 +35,7 @@ const Login = styled.div`
     LogoImg = styled.img`
         width: 25vh;
     `,
-    EmailForm = styled.form`
+    EmailForm = styled.div`
         display: inline-flex;
         flex-direction: column;
         position: relative;
@@ -44,11 +44,19 @@ const Login = styled.div`
         margin-bottom: 8px;
         width: 100%;
 
+        label {
+            font-size: 1.4rem;
+            color: ${colors.accent};
+            transform: ${props => props.focused ? '' : 'translate(0, 2.4rem) scale(1)'};
+            transition: .3s ease;
+        }
+
         input {
             position: relative;
             border: 0;
             border-bottom: 1.5px solid ${colors.accent};
             outline: none;
+            background: transparent;
         }
     `
 

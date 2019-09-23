@@ -36,7 +36,7 @@ function LogIn(props) {
           paddingBottom: '150px'
         }}
         type="Circles"
-        color={colors.secondary}
+        color={colors.primary}
         height="100"
         width="100"
       />
