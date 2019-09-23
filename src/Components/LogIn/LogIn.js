@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { connect } from "react-redux"
-import { FormControl, Input, InputLabel } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
-import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
 
-import { login, bsLogin, bsRedirect } from "../../Actions"
+import EmailModal from './EmailModal'
+import { register, login, bsLogin, bsRedirect } from "../../Actions"
+import { colors } from '../GlobalStyles'
 import { Login, SignInButton, LogoImg } from './styles'
 import Logo from '../Images/logo.png'
 
 function LogIn(props) {
 
-  const { fields, handleChanges, submit } = useForm(handleSubmit)
+  const [fuckery, setFuckery] = useState(false)
 
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
-
-  function handleSubmit() {
-    props.login(fields, props.history)
-  }
 
 
   useEffect(_ => creds && props.login(creds), [creds])
@@ -27,7 +22,10 @@ function LogIn(props) {
   useEffect(_ => {
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
       props.bsLogin(props.blockstackConfig)
-  }, [])
+    if (props.bsUser === (true || false) && props.user !== undefined) props.bsUser ?
+      props.login(props.user) :
+      props.register(props.user)
+  }, [props.bsUser])
 
   if (props.loggingIn) return (
 
@@ -38,7 +36,7 @@ function LogIn(props) {
           paddingBottom: '150px'
         }}
         type="Circles"
-        color="#BB1333"
+        color={colors.secondary}
         height="100"
         width="100"
       />
@@ -46,57 +44,21 @@ function LogIn(props) {
 
   )
 
+  if (fuckery) return <Login><EmailModal /></Login>
+
   else return (
 
     <Login>
 
       <LogoImg src={Logo} />
 
-      <form onSubmit={(e) => submit(e)}>
-
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email</InputLabel>
-          <Input
-            id="email"
-            name="email"
-            type='email'
-            autoComplete="email"
-            onChange={handleChanges}
-            autoFocus
-            style={{ fontSize: 16 }}
-          />
-        </FormControl>
-
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>Password</InputLabel>
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={handleChanges}
-            style={{ fontSize: 18 }}
-          />
-        </FormControl>
-
-        <SignInButton>Sign in Using E-mail</SignInButton>
-
-      </form>
-
       <SignInButton
         onClick={() => props.bsRedirect(props.blockstackConfig)}
       >Sign in with Blockstack</SignInButton>
 
-      <p>Don't have an account?</p>
-      <NavLink to="/register">Register Here</NavLink>
+      <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
+      <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here</a></p>
+      <p>Prefer email? <span onClick={_ => setFuckery(true)}>Click here</span></p>
 
     </Login>
 
@@ -106,5 +68,5 @@ function LogIn(props) {
 
 export default connect(
   state => ({ ...state }),
-  { login, bsLogin, bsRedirect }
+  { register, login, bsLogin, bsRedirect }
 )(LogIn)

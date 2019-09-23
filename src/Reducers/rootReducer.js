@@ -1,4 +1,4 @@
-import { SUCCESS, GETJOBS, REQUEST, BS_REQUEST } from '../Actions'
+import { SUCCESS, GETJOBS, REQUEST, BS_REQUEST, NEW_BS, BS } from '../Actions'
 import { initBlockstack } from 'react-blockstack'
 import { AppConfig, UserSession } from 'blockstack'
 
@@ -10,8 +10,10 @@ const initialState = {
 
     loggingIn: false,
     loggedIn: false,
+    user: undefined,
+    blockstackConfig: userSession,
     jobs: [],
-    blockstackConfig: userSession
+    bsUser: null
 
 }
 
@@ -28,6 +30,20 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggingIn: true
+            }
+
+        case BS:
+            return {
+                ...state,
+                bsUser: true,
+                user: action.payload
+            }
+
+        case NEW_BS:
+            return {
+                ...state,
+                user: action.payload,
+                bsUser: false
             }
 
         case SUCCESS:

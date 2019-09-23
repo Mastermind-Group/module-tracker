@@ -4,7 +4,6 @@ import EditIcon from '@material-ui/icons/CreateSharp'
 import { connect } from 'react-redux'
 
 import { StyledTableCell, StyledTableRow } from './styles'
-import { delJob } from '../../Actions'
 
 const Job = props => {
     return (
@@ -38,7 +37,6 @@ const Job = props => {
                 <DeleteIcon
                     cursor='pointer'
                     onClick={() => {
-                        props.delJob(props.row._id)
                         props.setUpdated(false)
                         props.setRows(...props.rows.filter(roww => roww._id !== props.row._id))
                     }}
@@ -58,6 +56,4 @@ const Job = props => {
 
 const mapStateToProps = state => ({ ...state })
 
-export default connect(
-    mapStateToProps, { delJob }
-)(Job)
+export default connect(mapStateToProps)(Job)

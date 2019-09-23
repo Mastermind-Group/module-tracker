@@ -4,7 +4,6 @@ import { Table, TableBody, TableHead, TableRow, Paper, Fab } from '@material-ui/
 import AddIcon from '@material-ui/icons/Add'
 
 import { StyledTableCell, useStyles } from './styles'
-import { getJobs, addJob, updateJob, delJob } from '../../Actions'
 import Job from './Job'
 import Modal from './Modal'
 
@@ -22,43 +21,6 @@ function AppliedJobs(props) {
       setUpdated(true)
 
   }, [props.jobs])
-
-  useEffect(() => {
-
-    if (!updated || newRow || editRow.bool) {
-
-      if (newRow) {
-
-        if (editRow.bool) {
-
-          props.updateJob(newRow)
-          setNewRow(null)
-          setEditRow({
-            bool: false,
-            row: {
-              company: '',
-              position: '',
-              location: '',
-              applied: null,
-              interview: null,
-              offer: null
-            }
-          })
-          setUpdated(false)
-
-        } else {
-
-          props.addJob(newRow)
-          setNewRow(null)
-          setUpdated(false)
-
-        }
-
-      } else props.getJobs()
-
-    } else setRows(props.jobs)
-
-  }, [updated, newRow])
 
   const classes = useStyles()
 
@@ -151,10 +113,4 @@ const mapStateToProps = state => ({
   jobs: state.jobs
 })
 
-export default connect(
-  mapStateToProps, {
-    getJobs,
-    addJob,
-    updateJob,
-    delJob
-  })(AppliedJobs)
+export default connect(mapStateToProps)(AppliedJobs)
