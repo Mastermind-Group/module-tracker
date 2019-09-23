@@ -22,10 +22,10 @@ function LogIn(props) {
   useEffect(_ => {
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
       props.bsLogin(props.blockstackConfig)
-    if (props.bsUser === (true || false) && props.user !== undefined) props.bsUser ?
+    if (props.bsUser) props.bsUser === 'existing' ?
       props.login(props.user) :
       props.register(props.user)
-  }, [props.bsUser])
+  }, [props.user])
 
   if (props.loggingIn) return (
 

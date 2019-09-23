@@ -34,8 +34,7 @@ const register = user => dispatch => {
 			const token = res.data.data.createUser.token
 			Cookies.set('token', token)
 			dispatch({ type: SUCCESS, payload: res.data })
-			if (jwt_decode(token).role === "Admin") window.location.pathname = '/admin/dashboard'
-			else if (token) window.location.pathname = '/dashboard/profile'
+			window.location.pathname = '/dashboard/profile'
 		})
 		.catch(err => handleError(err))
 }
@@ -58,19 +57,8 @@ const login = creds => dispatch => {
 			const { token } = res.data.data.login
 			Cookies.set('token', token)
 			Cookies.set('creds', JSON.stringify(creds))
-			const admin = jwt_decode(token)
-			console.log('admin', admin)
-			const location = Cookies.get('location')
 			dispatch({ type: SUCCESS, payload: token })
-			window.location.pathname = `${
-				token &&
-					location ? location
-					:
-					jwt_decode(token).role === "Admin" ?
-						'/admin/dashboard'
-						:
-						'/dashboard/profile'
-				}`
+			window.location.pathname = '/dashboard/profile'
 		})
 		.catch(err => handleError(err))
 }

@@ -4,6 +4,7 @@ import CancelIcon from '@material-ui/icons/ExitToApp'
 import FeedbackIcon from '@material-ui/icons/FeedbackOutlined'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
+import blockstack from 'blockstack'
 
 import Cookies from 'js-cookie'
 
@@ -23,6 +24,7 @@ export default props => {
                     Cookies.remove('creds')
                     Cookies.remove('token')
                     Cookies.set('location', window.location.pathname)
+                    blockstack.signUserOut()
                     props.history.push('/')
                 }
             })
