@@ -58,7 +58,7 @@ function LogIn(props) {
 
       <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
       <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here</a></p>
-      <p>Prefer email? <span onClick={_ => setFuckery(true)}>Click here</span></p>
+      <p>Prefer email? <a href='#' onClick={_ => setFuckery(true)}>Click here</a></p>
 
     </Login>
 

@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie'
-import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 import { handleError } from '../Utilities'
 
@@ -17,17 +16,15 @@ const register = user => dispatch => {
 	dispatch({ type: REQUEST })
 
 	axios.post(url, {
-		query: `
-      mutation{
-        createUser(inUser: {
-          username:"${user.username}",
-          password:"${user.password}"
-        }){
-          _id
-          token
-        }
-	  }
-	  `
+		query: `mutation{
+			createUser(inUser: {
+			username:"${user.username}",
+			password:"${user.password}"
+			}){
+			_id
+			token
+			}
+		}`
 	})
 		.then(res => {
 			console.log('REGISTERED', res)
@@ -47,7 +44,10 @@ const login = creds => dispatch => {
 
 	axios.post(url, {
 		query: `{
-			login(username:"${creds.username}", password:"${creds.password}"){
+			login(
+				username:"${creds.username}",
+				 password:"${creds.password}"
+				 ){
 				token
 			}
 		}`
