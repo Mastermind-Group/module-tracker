@@ -10,8 +10,6 @@ import App from './App'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { createGenerateClassName } from '@material-ui/core/styles'
 
-import './index.css'
-
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 const generateClassName = createGenerateClassName({

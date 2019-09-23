@@ -2,11 +2,10 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
-import LogIn from './Components/LogIn'
-import Register from './Components/Register'
+import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
-import './App.scss'
+import Global, { Flex } from './Components/GlobalStyles'
 
 const App = props => {
 
@@ -14,7 +13,8 @@ const App = props => {
 
   return (
 
-    <div className="App">
+    <Flex column container>
+      <Global />
       <Switch>
 
         <Route exact path="/"
@@ -34,7 +34,7 @@ const App = props => {
         <PrivateRoute path="/admin/dashboard" />
 
       </Switch>
-    </div>
+    </Flex>
 
   )
 }

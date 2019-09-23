@@ -1,152 +1,72 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import { connect } from "react-redux"
-import { CssBaseline, FormControl, Input, InputLabel, Paper, Button, withStyles } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
-import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
-import { login } from "../../Actions"
-import styles from './styles'
 
-
-
-
-import GLogo from '../Images/G-Sign-In-Normal.png'
-import GoogleLogin from 'react-google-login'
-
-
-import './login.scss'
+import EmailModal from './EmailModal'
+import { register, login, bsLogin, bsRedirect } from "../../Actions"
+import { colors } from '../GlobalStyles'
+import { Login, SignInButton, LogoImg } from './styles'
+import Logo from '../Images/logo.png'
 
 function LogIn(props) {
 
-
-
-  const { fields, handleChanges, submit } = useForm(handleSubmit)
-
-  const { classes } = props
+  const [fuckery, setFuckery] = useState(false)
 
   const creds = Cookies.get('creds') &&
     JSON.parse(Cookies.get('creds'))
 
-  const responseGoogle = res => {
 
-    console.log('res', res)
+  useEffect(_ => creds && props.login(creds), [creds])
 
-    const google = {
-      token: res.accessToken,
-      image: res.profileObj.imageUrl,
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-      password: `${res.googleId}${res.profileObj.familyName}`
-    }
+  useEffect(_ => {
+    if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
+      props.bsLogin(props.blockstackConfig)
+    if (props.bsUser) props.bsUser === 'existing' ?
+      props.login(props.user) :
+      props.register(props.user)
+  }, [props.user])
 
-    console.log(google)
+  if (props.loggingIn) return (
 
-    props.login(google, props.history)
-
-  }
-
-  function handleSubmit() {
-    props.login(fields, props.history)
-  }
-
-
-  useEffect(() => creds && props.login(creds), [creds])
-
-  if (props.loggingIn) return <main className={classes.main}>
-    <CssBaseline />
-    <Paper className={classes.paper} style={{ height: '600px', display: 'flex' }}>
+    <Login>
       <Loader
-        style={{ paddingTop: '225px' }}
+        style={{
+          paddingTop: '130px',
+          paddingBottom: '150px'
+        }}
         type="Circles"
-        color="#BB1333"
+        color={colors.secondary}
         height="100"
         width="100"
       />
-    </Paper>
-  </main>
+    </Login>
+
+  )
+
+  if (fuckery) return <Login><EmailModal /></Login>
 
   else return (
 
-    <main className={classes.main}>
-      <CssBaseline />
-      <Paper className={classes.paper}>
+    <Login>
 
-        <form
-          onSubmit={(e) => submit(e)}
-          className={classes.form}
-        >
+      <LogoImg src={Logo} />
 
-          <FormControl
-            margin="normal"
-            required
-            fullWidth
-          >
-            <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email</InputLabel>
-            <Input
-              id="email"
-              name="email"
-              type='email'
-              autoComplete="email"
-              onChange={handleChanges}
-              autoFocus
-              style={{ fontSize: 16 }}
-            />
-          </FormControl>
+      <SignInButton
+        onClick={() => props.bsRedirect(props.blockstackConfig)}
+      >Sign in with Blockstack</SignInButton>
 
-          <FormControl
-            margin="normal"
-            required
-            fullWidth
-          >
-            <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>Password</InputLabel>
-            <Input
-              name="password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={handleChanges}
-              style={{ fontSize: 18 }}
-            />
-          </FormControl>
+      <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
+      <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here</a></p>
+      <p>Prefer email? <a href='#' onClick={_ => setFuckery(true)}>Click here</a></p>
 
-          <Button
-            variant="outlined"
-            color="secondary"
-            className={classes.submit}
-            type="submit"
-            fullWidth
-            style={{ padding: '10px' }}
-          >Sign in</Button>
-
-          <div style={{ marginTop: '25px' }}>
-            <GoogleLogin
-              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-              render={renderProps => (
-                <img
-                  className={'oauth'}
-                  onClick={renderProps.onClick}
-                  alt='Google Logo' src={GLogo}
-                />
-              )}
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </div>
-        </form>
-        <p>Don't have an account?</p>
-        <NavLink to="/register">Register Here</NavLink>
-      </Paper>
-    </main>
+    </Login>
 
   )
 
 }
 
-const mapStateToProps = state => ({ ...state })
-
 export default connect(
-  mapStateToProps,
-  { login }
-)(withStyles(styles)(LogIn))
+  state => ({ ...state }),
+  { register, login, bsLogin, bsRedirect }
+)(LogIn)
