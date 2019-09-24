@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import EmailModal from './Email'
 import { register, login, bsLogin, bsRedirect } from "../../Actions"
 import { colors } from '../GlobalStyles'
-import { Login, SignInButton, LogoImg, LinkButton } from './styles'
+import { Login, SignInButton, LogoImg, LinkButton, ToP } from './styles'
 import Logo from '../Images/logo.png'
 
 function LogIn(props) {
@@ -42,8 +42,7 @@ function LogIn(props) {
     <Login>
       <LogoImg src={Logo} />
       <EmailModal setIsEmail={setIsEmail} login={props.login} />
-      <p style={{ marginTop: '20px' }}>Don't have your email registered yet?
-            <NavLink to='/register'> Sign up with e-mail</NavLink></p>
+      <ToP>Don't have your email registered yet? <NavLink to='/register'>Sign up with e-mail</NavLink></ToP>
       <p>Changed your mind?
             <LinkButton onClick={() => setIsEmail(false)}>Go back to Blockstack</LinkButton></p>
     </Login>
@@ -59,9 +58,8 @@ function LogIn(props) {
         onClick={() => props.bsRedirect(props.blockstackConfig)}
       >Sign in with Blockstack</SignInButton>
 
-      <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
-      <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here </a></p>
-      <p>Prefer e-mail? <LinkButton onClick={_ => setIsEmail(true)}> Click here </LinkButton></p>
+      <ToP>Don't have a Blockstack ID? <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'>Make one here</a></ToP>
+      <p>Prefer e-mail?<LinkButton onClick={_ => setIsEmail(true)}>Click here</LinkButton></p>
 
     </Login>
 

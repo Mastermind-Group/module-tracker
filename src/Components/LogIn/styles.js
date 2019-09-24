@@ -3,7 +3,7 @@ import { buttonSize, colors } from '../GlobalStyles'
 
 const Login = styled.div`
         display: flex;
-        background: white;
+        background: whitesmoke;
         box-shadow: 5px 5px 3px #00000050;
         flex-direction: column;
         padding: 3rem;
@@ -64,16 +64,22 @@ const Login = styled.div`
     LinkButton = styled.button`
         display: inline;
         background: none;
+        padding: none;
+        outline: none;
+        margin: none;
         border: none;
         font-size: 1.4rem;
         color: #337ab7;
-        outline: none;
+        transition: 0s;
 
         &:hover {
             transform: none;
             text-decoration: underline;
             color: #23527c;
         }
+    `,
+    ToP = styled.p`
+        margin-top: 35px;
     `
 
 export {
@@ -82,5 +88,6 @@ export {
     SignInButton,
     LogoImg,
     EmailForm,
-    LinkButton
+    LinkButton,
+    ToP
 }

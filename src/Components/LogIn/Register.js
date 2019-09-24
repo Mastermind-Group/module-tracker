@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner'
 
 import { register } from "../../Actions"
 import Logo from '../Images/logo.png'
-import { Login, SignInButton, LogoImg, EmailForm, LinkButton } from './styles'
+import { Login, SignInButton, LogoImg, EmailForm, LinkButton, ToP } from './styles'
 import { colors } from '../GlobalStyles'
 
 const Register = props => {
@@ -74,8 +74,7 @@ const Register = props => {
 
       </form>
 
-      <p>Already have an account?</p>
-      <NavLink to='/'>Log In</NavLink>
+      <ToP>Already have an account? <NavLink to='/'>Log In </NavLink></ToP>
 
     </Login>
 

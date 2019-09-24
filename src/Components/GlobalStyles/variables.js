@@ -6,7 +6,7 @@ const colors = {
     accent: '#999',
 
     // backgrounds
-    pbg: '#f8f8f8',
+    pbg: '#7db186',
     sbg: '#0c1323',
 
 }
