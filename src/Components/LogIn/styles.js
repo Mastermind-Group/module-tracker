@@ -43,11 +43,11 @@ const Login = styled.div`
         margin-top: 16px;
         margin-bottom: 8px;
         width: 100%;
+        font-size: 1.4rem;
 
         label {
-            font-size: 1.4rem;
             color: ${colors.accent};
-            transform: ${props => props.focused ? '' : 'translate(0, 2.4rem) scale(1)'};
+            transform: ${props => props.focused ? '' : 'translate(.5rem, 2.4rem)'};
             transition: .3s ease;
         }
 
@@ -57,6 +57,22 @@ const Login = styled.div`
             border-bottom: 1.5px solid ${colors.accent};
             outline: none;
             background: transparent;
+            padding-left: .5rem;
+            color: ${colors.primary};
+        }
+    `,
+    LinkButton = styled.button`
+        display: inline;
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: #337ab7;
+        outline: none;
+
+        &:hover {
+            transform: none;
+            text-decoration: underline;
+            color: #23527c;
         }
     `
 
@@ -65,5 +81,6 @@ export {
     Login,
     SignInButton,
     LogoImg,
-    EmailForm
+    EmailForm,
+    LinkButton
 }

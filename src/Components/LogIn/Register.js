@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from "react-redux"
-import { FormControl, Input, InputLabel } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
 
 import { register } from "../../Actions"
 import Logo from '../Images/logo.png'
-import { Login, SignInButton, LogoImg } from './styles'
+import { Login, SignInButton, LogoImg, EmailForm, LinkButton } from './styles'
+import { colors } from '../GlobalStyles'
 
 const Register = props => {
 
   const { fields, handleChanges, submit } = useForm(handleSubmit)
+
+  const [focus, setFocus] = useState(false)
+  const [focused, setFocused] = useState(false)
 
   function handleSubmit() {
     props.register(fields, props.admin)
@@ -27,7 +30,7 @@ const Register = props => {
           paddingBottom: '150px'
         }}
         type="Circles"
-        color="#BB1333"
+        color={colors.primary}
         height="100"
         width="100"
       />
@@ -43,43 +46,31 @@ const Register = props => {
 
       <form onSubmit={(e) => submit(e)}>
 
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email:</InputLabel>
-          <Input
-            id="email"
-            name="email"
+        <EmailForm required focused={focus}>
+          <label htmlFor="username">E-mail</label>
+          <input
+            id="username"
+            name="username"
             type="email"
-            onChange={handleChanges} autoComplete="email"
-            autoFocus
+            onChange={handleChanges}
+            onFocus={() => setFocus(true)}
+            onBlur={() => !fields.email && setFocus(false)}
           />
-        </FormControl>
+        </EmailForm>
 
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>New Password</InputLabel>
-          <Input
+        <EmailForm required focused={focused}>
+          <label htmlFor="password">New Password</label>
+          <input
             name="password"
             type="password"
             onChange={handleChanges}
             id="password"
-            autoComplete="current-password"
+            onFocus={() => setFocused(true)}
+            onBlur={() => !fields.password && setFocused(false)}
           />
-        </FormControl>
+        </EmailForm>
 
-        <SignInButton
-          variant="outlined"
-          color="secondary"
-          type="submit"
-          fullWidth
-          style={{ padding: '8px' }}
-        >Register</SignInButton>
+        <SignInButton>Register</SignInButton>
 
       </form>
 

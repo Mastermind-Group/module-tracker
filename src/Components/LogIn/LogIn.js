@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import Cookies from 'js-cookie'
 import { connect } from "react-redux"
 import Loader from 'react-loader-spinner'
+import { NavLink } from 'react-router-dom'
 
 import EmailModal from './Email'
 import { register, login, bsLogin, bsRedirect } from "../../Actions"
 import { colors } from '../GlobalStyles'
-import { Login, SignInButton, LogoImg } from './styles'
+import { Login, SignInButton, LogoImg, LinkButton } from './styles'
 import Logo from '../Images/logo.png'
 
 function LogIn(props) {
 
   const [isEmail, setIsEmail] = useState(false)
-
-  const creds = Cookies.get('creds') &&
-    JSON.parse(Cookies.get('creds'))
-
-
-  useEffect(_ => creds && props.login(creds), [creds])
 
   useEffect(_ => {
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
@@ -44,7 +38,16 @@ function LogIn(props) {
 
   )
 
-  if (isEmail) return <Login><EmailModal setIsEmail={setIsEmail} /></Login>
+  if (isEmail) return (
+    <Login>
+      <LogoImg src={Logo} />
+      <EmailModal setIsEmail={setIsEmail} login={props.login} />
+      <p style={{ marginTop: '20px' }}>Don't have your email registered yet?
+            <NavLink to='/register'> Sign up with e-mail</NavLink></p>
+      <p>Changed your mind?
+            <LinkButton onClick={() => setIsEmail(false)}>Go back to Blockstack</LinkButton></p>
+    </Login>
+  )
 
   else return (
 
@@ -57,8 +60,8 @@ function LogIn(props) {
       >Sign in with Blockstack</SignInButton>
 
       <p style={{ marginTop: '20px' }}>Don't have a Blockstack ID?
-      <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here</a></p>
-      <p>Prefer email? <a href='#' onClick={_ => setIsEmail(true)}>Click here</a></p>
+      <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'> Make one here </a></p>
+      <p>Prefer e-mail? <LinkButton onClick={_ => setIsEmail(true)}> Click here </LinkButton></p>
 
     </Login>
 

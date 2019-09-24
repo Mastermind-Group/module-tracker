@@ -19,10 +19,10 @@ const Email = props => {
         <form onSubmit={(e) => submit(e)}>
 
             <EmailForm required focused={focus}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="username">E-mail</label>
                 <input
-                    id="email"
-                    name="email"
+                    id="username"
+                    name="username"
                     type='email'
                     onChange={handleChanges}
                     onFocus={() => setFocus(true)}
