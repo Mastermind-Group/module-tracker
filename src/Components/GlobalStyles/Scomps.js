@@ -29,6 +29,7 @@ const Flex = styled.div`
     };
         flex-direction: ${props => props.column ? 'column' : 'row'};
         width: 100%;
+        margin: 0 auto;
         ${props => props.container && 'height: 100vh'};
 `,
 

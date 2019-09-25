@@ -3,11 +3,10 @@ import { Checkbox, Paper, Grid } from '@material-ui/core'
 
 import { useStyles } from './styles'
 import { assignments } from '../Assignments'
+import { Flex } from '../GlobalStyles'
 import Accord from '../Accordian'
 import Swal from 'sweetalert2'
 import avatar from '../Images/avataaars.png'
-
-import './profile.scss'
 
 const Profile = props => {
 
@@ -44,7 +43,7 @@ const Profile = props => {
 
 	return (
 
-		<div style={{ marginBottom: '100px' }}>
+		<Flex column>
 			<div style={{ marginBottom: '30px' }}>
 				<img
 					alt="Pirate Josh Knell"
@@ -60,10 +59,7 @@ const Profile = props => {
 
 			</div>
 
-			<div
-				style={{ display: 'flex' }}
-				className="profile"
-			>
+			<Flex column>
 				<div
 					style={{
 						width: '48%',
@@ -186,7 +182,7 @@ const Profile = props => {
 				</div>
 
 				<div style={{ width: '48%' }} className="profile-assignments">
-					{assignments.map((assignment, index) => (
+					{assignments.length && assignments.map((assignment, index) => (
 						<Accord
 							key={index}
 							assigns={assignment.assigns}
@@ -195,8 +191,8 @@ const Profile = props => {
 						/>
 					))}
 				</div>
-			</div>
-		</div>
+			</Flex>
+		</Flex>
 
 	)
 
