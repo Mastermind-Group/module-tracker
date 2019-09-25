@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Checkbox, Paper, Grid } from '@material-ui/core'
 
-import { Item } from './styles'
+import { Item, Header } from './styles'
 import { Flex } from '../GlobalStyles'
 import Swal from 'sweetalert2'
 import avatar from '../Images/avataaars.png'
@@ -54,30 +54,16 @@ const Profile = props => {
 
 			</div>
 
-			<Flex column control={50}>
-				<Grid container spacing={8}>
+			<Flex column spaceAA>
 
-					<Grid item xs={12}>
-						<Paper
-							style={{ padding: '10px', margin: '5px', background: 'darkblue', color: 'white' }}
-						>
-							Career Goal Checkup
-							</Paper>
-					</Grid>
+				<Header>Career Goal Checkup</Header>
 
-					<Grid item xs={12} sm={6}>
-						<Item>
-							<b>SMART Goals</b>
-						</Item>
-					</Grid>
+				<Flex wrap control='50%' startA>
 
-					<Grid item xs={12} sm={6}>
-						<Item>
-							<b>Stats</b>
-						</Item>
-					</Grid>
+					<Flex column control='48%'>
 
-					<Grid item xs={12} sm={6}>
+						<Item><b>SMART Goals</b></Item>
+
 						<Item>
 							Goal #1{' '}
 							<Checkbox
@@ -90,15 +76,7 @@ const Profile = props => {
 								}}
 							/>
 						</Item>
-					</Grid>
 
-					<Grid item xs={12} sm={6}>
-						<Paper style={{ padding: '23px 10px', margin: '5px' }}>
-							Lessons: 12/12
-							</Paper>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
 						<Item>
 							Goal #2{' '}
 							<Checkbox
@@ -111,15 +89,7 @@ const Profile = props => {
 								}}
 							/>
 						</Item>
-					</Grid>
 
-					<Grid item xs={12} sm={6}>
-						<Paper style={{ padding: '23px 10px', margin: '5px' }}>
-							All Training: Complete
-							</Paper>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
 						<Item>
 							Goal #3{' '}
 							<Checkbox
@@ -132,15 +102,7 @@ const Profile = props => {
 								}}
 							/>
 						</Item>
-					</Grid>
 
-					<Grid item xs={12} sm={6}>
-						<Paper style={{ padding: '23px 10px', margin: '5px' }}>
-							Profile: *In Progress*
-							</Paper>
-					</Grid>
-
-					<Grid item xs={12} sm={6}>
 						<Item>
 							Goal #4{' '}
 							<Checkbox
@@ -153,19 +115,22 @@ const Profile = props => {
 								}}
 							/>
 						</Item>
-					</Grid>
 
-					<Grid item xs={12} sm={6}>
-						<Paper
-							style={{
-								padding: '10px',
-								margin: '5px',
-								visibility: 'hidden'
-							}}
-						/>
-					</Grid>
+					</Flex>
 
-				</Grid>
+					<Flex column control='48%'>
+
+						<Item><b>Stats</b></Item>
+
+						<Item>Lessons: 12/12</Item>
+
+						<Item>All Training: Complete</Item>
+
+						<Item>Profile: *In Progress*</Item>
+
+					</Flex>
+
+				</Flex>
 			</Flex>
 		</Flex>
 
