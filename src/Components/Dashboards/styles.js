@@ -72,7 +72,7 @@ export const GlobalTop = styled.div`
     Content = styled.main`
         position: absolute;
         top: 73px;
-        left: auto;
+        left: ${props => drawerWidth(props)};
         display: flex;
         justify-content: center;
         overflow: auto;
