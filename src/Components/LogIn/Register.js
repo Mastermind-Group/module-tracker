@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner'
 
 import { register } from "../../Actions"
 import Logo from '../Images/logo.png'
-import { Login, SignInButton, LogoImg, EmailForm, LinkButton, ToP } from './styles'
+import { Login, SignInButton, LogoImg, EmailForm, ToP } from './styles'
 import { colors } from '../GlobalStyles'
 
 const Register = props => {

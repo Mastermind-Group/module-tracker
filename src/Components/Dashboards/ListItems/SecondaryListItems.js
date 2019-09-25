@@ -1,12 +1,13 @@
 import React from 'react'
-import { ListItem, ListItemIcon, ListItemText, Tooltip, List } from '@material-ui/core'
-import CancelIcon from '@material-ui/icons/ExitToApp'
-import FeedbackIcon from '@material-ui/icons/FeedbackOutlined'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 import blockstack from 'blockstack'
-
 import Cookies from 'js-cookie'
+
+import { IconButton } from '../styles'
+import { colors } from '../../GlobalStyles'
+
 
 export default props => {
 
@@ -15,8 +16,8 @@ export default props => {
             title: 'Are you sure you want to log out?',
             type: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#BB1333',
+            confirmButtonColor: colors.pbg,
+            cancelButtonColor: colors.accent,
             confirmButtonText: 'Yes, log me out!'
         })
             .then((res) => {
@@ -30,29 +31,18 @@ export default props => {
             })
     }
 
-    return <List>
-        <div>
-            <ListItem button onClick={handleLogOut}>
-                <ListItemIcon>
-                    <Tooltip title='LogOut' placement='right'>
-                        <CancelIcon style={{ transform: 'rotate(180deg)' }} />
-                    </Tooltip>
-                </ListItemIcon>
-                <ListItemText primary="Log Out" />
-            </ListItem>
+    return <>
 
+        <IconButton list open={props.open} onClick={handleLogOut}>
+            <FontAwesomeIcon icon='sign-out-alt' style={{ transform: 'rotate(180deg)' }} />  <strong>Log Out</strong>
+        </IconButton>
+
+        <IconButton list open={props.open}>
             <Link style={{ textDecoration: 'none' }} to="/dashboard/feedback">
-                <ListItem button>
-                    <ListItemIcon style={{ color: "#bb1333" }}>
-                        <Tooltip title='User Feedback' placement='right'>
-                            <FeedbackIcon />
-                        </Tooltip>
-                    </ListItemIcon>
-                    <ListItemText primary="Feedback" />
-                </ListItem>
+                <FontAwesomeIcon icon='comment-alt' />  <strong>Feedback</strong>
             </Link>
+        </IconButton>
 
-        </div>
-    </List>
+    </>
 
 }

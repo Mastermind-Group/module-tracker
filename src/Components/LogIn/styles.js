@@ -12,16 +12,6 @@ const Login = styled.div`
         width: 425px;
         max-height: 100vh || max-content;
     `,
-    Oauth = styled.img`
-        width: 40px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-        border-radius: 360px;
-        margin: 20px auto;
-
-        &:hover {
-            box-shadow: 0 4px 9px rgba(0,0,0,0.25), 0 2px 5px rgba(0,0,0,0.22);  
-        }
-    `,
     SignInButton = styled.button`
         width: 100%;
         padding: ${buttonSize.medium};
@@ -71,10 +61,12 @@ const Login = styled.div`
         font-size: 1.4rem;
         color: #337ab7;
         transition: 0s;
+        transform: translate(0, 1px);
 
         &:hover {
             transform: none;
             text-decoration: underline;
+            transform: translate(0, 1px);
             color: #23527c;
         }
     `,
@@ -83,7 +75,6 @@ const Login = styled.div`
     `
 
 export {
-    Oauth,
     Login,
     SignInButton,
     LogoImg,
