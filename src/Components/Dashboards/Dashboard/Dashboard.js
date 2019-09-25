@@ -47,7 +47,7 @@ const Dashboard = props => {
 
 		</Drawer>
 
-		<Content>
+		<Content open={open}>
 			<Switch>
 				<Route path='/dashboard/profile' component={Profile} />
 				<Route path='/dashboard/assignments' component={AssignmentList} />

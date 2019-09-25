@@ -79,27 +79,20 @@ export default theme => ({
     },
 })
 
-export const Global = styled.div`
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: auto;
-    right: 0;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 50;
-    margin-left: ${props => props.open ? '200px' : '0'};
-    transition: .3s ease;
-`,
-    GlobalTop = styled.div`
-        position: relative;
+export const GlobalTop = styled.div`
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 0;
+        box-sizing: border-box;
+        z-index: 50;
         display: flex;
         align-items: center;
         justify-content: space-between;
         min-height: 50px;
         background: whitesmoke;
-        padding: 8px 20px;
-        width: 100%
+        padding: 8px 20px 8px 5px;
+        width: 100%;
         border-bottom: 1px solid ${colors.accent};
     `,
     IconButton = styled.p`
@@ -123,16 +116,19 @@ export const Global = styled.div`
         }
     `,
     Drawer = styled.div`
-        margin-top: 135px;
         padding-left: ${props => props.open ? '10px' : 'auto'};
-        position: relative;
+        position: absolute;
+        top: 73px;
+        left: 0;
+        z-index: 49;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
         flex-wrap: no-wrap;
         width: ${props => props.open ? '200px' : '70px'};
-        height: 100%;
+        min-height: 100vh;
+        border-radius: 0 0 100% 0;
         transition: .3s ease;
         overflow-x: hidden;
         background: whitesmoke;
@@ -150,14 +146,15 @@ export const Global = styled.div`
         }
     `,
     Content = styled.main`
-        margin-top: 135px;
+        position: absolute;
+        top: 73px;
+        left: ${props => props.open ? '200px' : '70px'};
         display: flex;
         justify-content: center;
         overflow: auto;
         flex-grow: 1;
         padding: 3rem;
-        min-height: 100vh;
-        margin-left: ${props => props.open ? '200px' : '0'};
-        ${props => console.log(props)}
-        width: ${props => props.open ? 'calc(100%-200px)' : '100%'};
+        min-height: 70vh;
+        width: ${props => props.open ? 'calc(100%-200px)' : 'calc(100%-70px)'};
+        transition: .3s ease;
     `
