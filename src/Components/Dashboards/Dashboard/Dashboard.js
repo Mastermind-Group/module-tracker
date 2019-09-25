@@ -18,7 +18,7 @@ const Dashboard = props => {
 
 	const handleDrawer = () => setOpen(!open)
 
-	useEffect(() => { open && setTimeout(() => { handleDrawer() }, 10000) }, [open])
+	useEffect(() => { open && setTimeout(() => { handleDrawer() }, 20000) }, [open])
 
 	return <>
 
@@ -60,16 +60,36 @@ const Dashboard = props => {
 			</Switch>
 
 			<CookieConsent
-				location="bottom"
+				flipButtons={true}
+				location='none'
 				enableDeclineButton={true}
 				// debug={true}
-				declineButtonText="I decline"
-				buttonText="I understand"
+				declineButtonText="Decline"
+				buttonText="Accept"
 				cookieName="cookieConsent"
-				style={{ background: colors.sbg, marginBottom: '15px' }}
-				buttonStyle={{ color: colors.sbg, fontSize: '13px', background: 'white' }}
+				style={{
+					background: colors.sbg,
+					marginBottom: '15px',
+					width: 'max-content',
+					position: 'fixed',
+					bottom: '15px',
+					left: 'auto',
+					right: '15px',
+					borderRadius: '15px',
+					fontSize: '20px',
+				}}
+				buttonStyle={{
+					color: colors.primary,
+					background: 'whitesmoke',
+					borderRadius: '5px',
+				}}
+				declineButtonStyle={{
+					color: 'orange',
+					background: 'red',
+					borderRadius: '5px',
+				}}
 				expires={150}
-			>This website uses cookies to enhance the user experience. <span style={{ fontSize: '10px' }} />
+			>This website uses cookies to enhance the user experience.
 			</CookieConsent>
 
 		</Content>

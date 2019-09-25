@@ -1,4 +1,8 @@
-.Modal {
+import styled from 'styled-components'
+import { colors } from '../../../../GlobalStyles'
+
+export const ModalContainer = styled.div`
+    display: ${props => props.show ? 'flex' : 'none'};
     position: fixed;
     top: 0;
     left: 0;
@@ -8,26 +12,22 @@
     z-index: 1;
     justify-content: center;
     align-items: center;
-  
-    .modal-main {
+`,
+    ModalMain = styled.section`
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      background: white;
+      background: whitesmoke;
       width: 30%;
       height: auto;
-      
-      button {
+    `,
+    Button = styled.button`
         margin-top: 25px;
-        background: #0B3D91;
-        color: white;
+        background: ${colors.primary};
+        color: whitesmoke;
         border: none;
         border-radius: 5px;
         padding: 7px;
         margin-bottom: 15px;
-      }
-
-    }
-
-  }
+    `

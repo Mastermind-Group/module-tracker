@@ -3,12 +3,11 @@ import moment from 'moment'
 
 import { addMonth, subMonth } from '../../utils'
 import DatePicker from '../DatePicker'
-import Weekday from './Weekdays'
 import FrontBlank from './FrontBlanks'
 import MonthDay from './MonthDays'
 import BackBlank from './BackBlanks'
 import monthVars from './vars'
-import './Month.scss'
+import { MonthContainer, Top, Title, Next, DayName } from './styles'
 
 export default function Month(props) {
 
@@ -18,29 +17,25 @@ export default function Month(props) {
 
   return (
 
-    <div className="Month">
+    <MonthContainer>
 
-      <div className="top" style={{ gridArea: 'title' }}>
-        <div className="title">
-          <span
-            className='next'
-            onClick={() => props.setSelected(subMonth(props.selected, 1, 'month', true))}
-          >{'<'}</span>
+      <Top>
+        <Title>
+          <Next onClick={() => props.setSelected(subMonth(props.selected, 1, 'month', true))}
+          >{'<'}</Next>
           <h3>{moment(props.selected).format('MMMM YYYY')}</h3>
-          <span
-            className='next'
-            onClick={() => props.setSelected(addMonth(props.selected, 1, 'month', true))}
-          >{'>'}</span>
-        </div>
+          <Next onClick={() => props.setSelected(addMonth(props.selected, 1, 'month', true))}
+          >{'>'}</Next>
+        </Title>
         <DatePicker id='dp' currentDate={props.currentDate} setCurrentDate={props.setSelected} />
-      </div>
+      </Top>
 
       {weekdays
         .map(day =>
-          <Weekday
+          <DayName
             day={day}
-            key={day}
-          />
+            key={day}>{day}
+          </DayName>
         )}
 
       {frontBlanks
@@ -81,7 +76,7 @@ export default function Month(props) {
           />
         )}
 
-    </div>
+    </MonthContainer>
 
   )
 

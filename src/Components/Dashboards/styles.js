@@ -1,83 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../GlobalStyles'
 
-export default theme => ({
-    root: {
-        display: 'flex',
-
-    },
-    toolbarIcon: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        minHeight: 56,
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-
-        }),
-        backgroundColor: '#BB1333'
-    },
-    appBarShift: {
-        marginLeft: 200,
-        width: 'calc(100% - 200px)',
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    menuButton: {
-        marginLeft: 12,
-        marginRight: 36,
-    },
-    menuButtonHidden: {
-        display: 'none',
-    },
-    title: {
-        flexGrow: 1,
-    },
-    drawerPaper: {
-        position: 'relative',
-        whitesmokeSpace: 'nowrap',
-        width: 200,
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-        zIndex: 0,
-    },
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing.unit * 7,
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing.unit * 9,
-        },
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing.unit * 3,
-        height: '100vh',
-        overflow: 'auto',
-    },
-    chartContainer: {
-        marginLeft: -22,
-    },
-    tableContainer: {
-        height: 'max-content',
-    },
-    h5: {
-        marginBottom: theme.spacing.unit * 2,
-    },
-})
+const drawerWidth = props => props.open ? '200px' : '70px'
 
 export const GlobalTop = styled.div`
         position: absolute;
@@ -126,7 +50,7 @@ export const GlobalTop = styled.div`
         align-items: flex-start;
         justify-content: flex-start;
         flex-wrap: no-wrap;
-        width: ${props => props.open ? '200px' : '70px'};
+        width: ${props => drawerWidth(props)};
         min-height: 100vh;
         border-radius: 0 0 100% 0;
         transition: .3s ease;
@@ -148,13 +72,13 @@ export const GlobalTop = styled.div`
     Content = styled.main`
         position: absolute;
         top: 73px;
-        left: ${props => props.open ? '200px' : '70px'};
+        left: auto;
         display: flex;
         justify-content: center;
         overflow: auto;
         flex-grow: 1;
         padding: 3rem;
         min-height: 70vh;
-        width: ${props => props.open ? 'calc(100%-200px)' : 'calc(100%-70px)'};
+        justify-self: center;
         transition: .3s ease;
     `

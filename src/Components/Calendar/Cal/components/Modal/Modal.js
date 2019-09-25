@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 
 import Event from './Event'
-import './modal.scss'
+import { Button, ModalContainer, ModalMain } from './styles'
 
 const Modal = props => {
 
@@ -12,15 +12,8 @@ const Modal = props => {
 
     return (
 
-        <div
-            className='Modal'
-            style={{ display: props.show ? 'flex' : 'none' }}
-            onClick={props.showModal}
-        >
-            <section
-                className="modal-main"
-                onClick={(e) => e.stopPropagation()}
-            >
+        <ModalContainer show={props.show} onClick={props.showModal}>
+            <ModalMain onClick={(e) => e.stopPropagation()}>
                 <h1>{moment(props.selected).format('MMMM Do YYYY')}</h1>
                 {match.length ? match.map((e, id) => <Event key={id} {...e} />) : ''}
                 <form onSubmit={(e) => {
@@ -29,10 +22,10 @@ const Modal = props => {
                     setName('')
                 }}>
                     <input type="text" onChange={(e) => setName(e.target.value)} value={name} />
-                    <button>Add Event</button>
+                    <Button>Add Event</Button>
                 </form>
-            </section>
-        </div>
+            </ModalMain>
+        </ModalContainer>
 
     )
 
