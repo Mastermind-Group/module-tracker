@@ -30,13 +30,6 @@ export default props => {
             </Link>
         </IconButton>
 
-        {!props.admin &&
-            <IconButton open={props.open} list>
-                <Link style={{ textDecoration: 'none' }} to="/dashboard/applied-jobs">
-                    <FontAwesomeIcon icon='briefcase' />  <strong>Applied Jobs</strong>
-                </Link>
-            </IconButton>
-        }
 
         <IconButton open={props.open} list>
             <Link style={{ textDecoration: 'none' }} to={props.admin ? '/admin/dashboard/endorsement' : "/dashboard/endorsement"}>

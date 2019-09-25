@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
-
-import Applied from '../../JobSearch'
 import AssignmentList, { ComingSoon, ColdOutreach } from '../../Assignments'
 import Profile from '../../Profile'
 import Endorsement from '../../EndorsementChecklist'
@@ -53,7 +51,6 @@ const Dashboard = props => {
 				<Route path='/dashboard/assignments' component={AssignmentList} />
 				<Route path='/dashboard/calendar' component={Calendar} />
 				<Route path='/dashboard/endorsement' component={Endorsement} />
-				<Route path='/dashboard/applied-jobs' component={Applied} />
 				<Route path='/dashboard/cold-outreach' component={ColdOutreach} />
 				<Route path='/dashboard/coming-soon' component={ComingSoon} />
 				<Route path='/dashboard/feedback' component={Feedback} />
