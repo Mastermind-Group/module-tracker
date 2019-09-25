@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import classNames from 'classnames'
-import { IconButton, Divider, Drawer, CssBaseline, withStyles } from '@material-ui/core'
 import { Switch, Route } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-import { MainListItems, SecondaryListItems, AppBar } from '../ListItems'
 import Endorsement from '../../EndorsementChecklist'
+import { MainListItems, SecondaryListItems, Top } from '../ListItems'
 import Calendar from '../../Calendar'
 import Feedback from '../../Feedback'
-import styles from './styles'
+import { Content, Drawer } from '../styles'
+import { colors } from '../../GlobalStyles'
 
 const AdminDashboard = props => {
 
@@ -17,51 +15,41 @@ const AdminDashboard = props => {
 
     const handleDrawer = () => setOpen(!open)
 
-    useEffect(() => { open && setTimeout(() => { handleDrawer() }, 5000) }, [open])
+    useEffect(() => { open && setTimeout(() => { handleDrawer() }, 10000) }, [open])
 
-    const { classes } = props
+    return <>
 
-    return (
+        <Top
+            open={open}
+            handleDrawer={handleDrawer}
+        />
 
-        <div className={classes.root}>
-            <CssBaseline />
+        <Drawer open={open}>
 
-            <AppBar {...props}
-                classes={classes}
+            <MainListItems open={open} />
+
+            <hr style={{
+                color: colors.accent,
+                backgroundColor: colors.accent,
+                height: 2,
+                width: '120%',
+                marginLeft: -10,
+            }} />
+
+            <SecondaryListItems
                 open={open}
-                handleDrawer={handleDrawer}
+                admin={props.admin}
+                history={props.history}
             />
 
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose)
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    <IconButton onClick={() => handleDrawer()}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
+        </Drawer>
 
-                <Divider />
-
-                <MainListItems admin={props.admin} />
-
-                <Divider />
-
-                <SecondaryListItems admin={props.admin} history={props.history} />
-            </Drawer>
-
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Switch>
-                    <Route path='/admin/dashboard/calendar' component={Calendar} />
-                    <Route path='/admin/dashboard/endorsement' component={Endorsement} />
-                    <Route path='/dashboard/feedback' component={Feedback} />
-                </Switch>
-            </main>
+        <Content>
+            <Switch>
+                <Route path='/admin/dashboard/calendar' component={Calendar} />
+                <Route path='/admin/dashboard/endorsement' component={Endorsement} />
+                <Route path='/dashboard/feedback' component={Feedback} />
+            </Switch>
 
             <CookieConsent
                 location="bottom"
@@ -70,16 +58,16 @@ const AdminDashboard = props => {
                 declineButtonText="I decline"
                 buttonText="I understand"
                 cookieName="cookieConsent"
-                style={{ background: '#BB1333', marginBottom: '15px' }}
-                buttonStyle={{ color: '#BB1333', fontSize: '13px', background: 'white' }}
+                style={{ background: colors.sbg, marginBottom: '15px' }}
+                buttonStyle={{ color: colors.sbg, fontSize: '13px', background: 'white' }}
                 expires={150}
-            >
-                This website uses cookies to enhance the user experience. <span style={{ fontSize: '10px' }} />
+            >This website uses cookies to enhance the user experience. <span style={{ fontSize: '10px' }} />
             </CookieConsent>
-        </div>
 
-    )
+        </Content>
+
+    </>
 
 }
 
-export default withStyles(styles)(AdminDashboard)
+export default AdminDashboard

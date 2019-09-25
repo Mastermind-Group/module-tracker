@@ -1,57 +1,36 @@
-import React, { useEffect } from 'react'
-import Cookies from 'js-cookie'
+import React, { useState, useEffect } from 'react'
 import { connect } from "react-redux"
-import { FormControl, Input, InputLabel } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
-import { useForm } from 'customhooks'
 import Loader from 'react-loader-spinner'
-import { login, blockstackLogin } from "../../Actions"
+import { NavLink } from 'react-router-dom'
 
-import GLogo from '../Images/G-Sign-In-Normal.png'
-import GoogleLogin from 'react-google-login'
-
-import { Flex } from '../GlobalStyles'
-import { Oauth, Login, SignInButton } from './styles'
+import EmailModal from './Email'
+import { register, login, bsLogin, bsRedirect } from "../../Actions"
+import { colors } from '../GlobalStyles'
+import { Login, SignInButton, LogoImg, LinkButton, ToP } from './styles'
+import Logo from '../Images/logo.png'
 
 function LogIn(props) {
 
-  const { fields, handleChanges, submit } = useForm(handleSubmit)
+  const [isEmail, setIsEmail] = useState(false)
 
-  const creds = Cookies.get('creds') &&
-    JSON.parse(Cookies.get('creds'))
-
-  const responseGoogle = res => {
-
-    console.log('res', res)
-
-    const google = {
-      token: res.accessToken,
-      image: res.profileObj.imageUrl,
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-      password: `${res.googleId}${res.profileObj.familyName}`
-    }
-
-    console.log(google)
-
-    props.login(google, props.history)
-
-  }
-
-  function handleSubmit() {
-    props.login(fields, props.history)
-  }
-
-
-  useEffect(() => creds && props.login(creds), [creds])
+  useEffect(_ => {
+    if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
+      props.bsLogin(props.blockstackConfig)
+    if (props.bsUser) props.bsUser ?
+      props.login(props.user) :
+      props.register(props.user)
+  }, [props.user])
 
   if (props.loggingIn) return (
 
     <Login>
       <Loader
-        style={{ paddingTop: '130px', paddingBottom: '150px' }}
+        style={{
+          paddingTop: '130px',
+          paddingBottom: '150px'
+        }}
         type="Circles"
-        color="#BB1333"
+        color={colors.primary}
         height="100"
         width="100"
       />
@@ -59,70 +38,28 @@ function LogIn(props) {
 
   )
 
+  if (isEmail) return (
+    <Login>
+      <LogoImg src={Logo} />
+      <EmailModal setIsEmail={setIsEmail} login={props.login} />
+      <ToP>Don't have your email registered yet? <NavLink to='/register'>Sign up with e-mail</NavLink></ToP>
+      <p>Changed your mind?
+            <LinkButton onClick={() => setIsEmail(false)}>Go back to Blockstack</LinkButton></p>
+    </Login>
+  )
+
   else return (
 
     <Login>
 
-      <form onSubmit={(e) => submit(e)}>
-
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="email" style={{ fontSize: 14, color: '#999' }}>Email</InputLabel>
-          <Input
-            id="email"
-            name="email"
-            type='email'
-            autoComplete="email"
-            onChange={handleChanges}
-            autoFocus
-            style={{ fontSize: 16 }}
-          />
-        </FormControl>
-
-        <FormControl
-          margin="normal"
-          required
-          fullWidth
-        >
-          <InputLabel htmlFor="password" style={{ fontSize: 14, color: '#999' }}>Password</InputLabel>
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={handleChanges}
-            style={{ fontSize: 18 }}
-          />
-        </FormControl>
-
-        <SignInButton>Sign in Using E-mail</SignInButton>
-
-      </form>
+      <LogoImg src={Logo} />
 
       <SignInButton
-        onClick={() => props.blockstackLogin(props.blockstackConfig)}
+        onClick={() => props.bsRedirect(props.blockstackConfig)}
       >Sign in with Blockstack</SignInButton>
 
-      <Flex>
-        <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          render={renderProps => (
-            <Oauth
-              onClick={renderProps.onClick}
-              alt='Google Logo' src={GLogo}
-            />
-          )}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-        />
-      </Flex>
-
-      <p>Don't have an account?</p>
-      <NavLink to="/register">Register Here</NavLink>
+      <ToP>Don't have a Blockstack ID? <a href='https://browser.blockstack.org/' target='_blank' rel='noopener noreferrer'>Make one here</a></ToP>
+      <p>Prefer e-mail?<LinkButton onClick={_ => setIsEmail(true)}>Click here</LinkButton></p>
 
     </Login>
 
@@ -130,9 +67,7 @@ function LogIn(props) {
 
 }
 
-const mapStateToProps = state => ({ ...state })
-
 export default connect(
-  mapStateToProps,
-  { login, blockstackLogin }
+  state => ({ ...state }),
+  { register, login, bsLogin, bsRedirect }
 )(LogIn)

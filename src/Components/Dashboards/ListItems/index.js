@@ -1,5 +1,5 @@
 import MainListItems from './MainListItems'
 import SecondaryListItems from './SecondaryListItems'
-import AppBar from './AppBar'
+import Top from './AppBar'
 
-export { MainListItems, SecondaryListItems, AppBar }
+export { MainListItems, SecondaryListItems, Top }

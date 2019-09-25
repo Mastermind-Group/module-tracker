@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 
 import { momentDate } from '../../../utils'
+import { Day } from '../styles'
 import Modal from '../../Modal'
 
 export default props => {
@@ -26,16 +27,17 @@ export default props => {
                 addEvent={props.addEvent}
             />
 
-            <div
+            <Day
                 onClick={() => {
                     props.setSelected(moment(`${yyMm}-${props.day}`).format('YYYY-MM-DD'))
                     showModal()
                 }}
                 className={`day${props.currentDate === yyMm + '-' + props.day ? ' active' :
                     props.selected === yyMm + '-' + props.day ? ' selected' : ''}`}
-                style={{ gridArea: `day${props.frontBlanks.length + props.day}`, border: match.length && '2px ridge red' }}
+                day={`day${props.frontBlanks.length + props.day}`}
+                match={match.length > 0}
             >{props.day}
-            </div>
+            </Day>
         </>
     )
 

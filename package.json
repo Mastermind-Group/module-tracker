@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/styles": "^4.1.2",
@@ -20,7 +23,6 @@
     "react-blockstack": "^0.5.2",
     "react-cookie-consent": "^2.3.2",
     "react-dom": "^16.8.6",
-    "react-google-login": "^5.0.4",
     "react-jss": "^8.6.1",
     "react-loader-spinner": "^3.1.2",
     "react-redux": "^7.1.0",

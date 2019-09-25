@@ -1,49 +1,25 @@
 import React from 'react'
-import { Badge, Typography, Toolbar, AppBar, IconButton } from '@material-ui/core'
-import moment from 'moment-timezone'
-import classNames from 'classnames'
-import MenuIcon from '@material-ui/icons/Menu'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { GlobalTop, IconButton, GlobalHeader } from '../styles'
+import Logo from '../../Images/logo.png'
 
 
 export default props => {
 
-    return <AppBar
-        position="absolute"
-        // color="secondary"
-        className={classNames(props.classes.appBar, props.open &&
-            props.classes.appBarShift)}
-    >
-        <Toolbar disableGutters={!props.open} className={props.classes.toolbar}>
-            <IconButton
-                color="inherit"
-                aria-label="Open drawer"
+    return <GlobalTop>
+        <IconButton open>
+            <FontAwesomeIcon
+                icon={props.open ? 'chevron-left' : 'bars'}
                 onClick={props.handleDrawer}
-                className={classNames(props.classes.menuButton, props.open && props.classes.menuButtonHidden)}
-            >
-                <MenuIcon />
-            </IconButton>
+            />
+        </IconButton>
 
-            <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
-                noWrap
-                className={props.classes.title}
-            >
+        <GlobalHeader><img src={Logo} alt="Leaf" /> Element Learning</GlobalHeader>
 
-                <p> {moment().tz('America/Los_Angeles').format('MMMM Do YYYY, h:mm:ss a')}</p>
-            </Typography>
-
-            <IconButton color="inherit">
-                <Badge
-                    badgeContent={1}
-                    color={props.admin ? 'secondary' : 'primary'}
-                >
-                    <NotificationsIcon />
-                </Badge>
-            </IconButton>
-        </Toolbar>
-    </AppBar>
+        <IconButton open>
+            <FontAwesomeIcon icon='bell' />
+        </IconButton>
+    </GlobalTop>
 
 }
