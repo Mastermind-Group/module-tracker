@@ -4,7 +4,7 @@ import { colors } from '../GlobalStyles'
 const drawerWidth = props => props.open ? '200px' : '70px'
 
 export const GlobalTop = styled.div`
-        position: absolute;
+        position: fixed;
         top: 0;
         left: auto;
         right: 0;
@@ -41,7 +41,7 @@ export const GlobalTop = styled.div`
     `,
     Drawer = styled.div`
         padding-left: ${props => props.open ? '10px' : 'auto'};
-        position: absolute;
+        position: fixed;
         top: 73px;
         left: 0;
         z-index: 49;
@@ -79,6 +79,7 @@ export const GlobalTop = styled.div`
         flex-grow: 1;
         padding: 3rem;
         min-height: 70vh;
+        width: ${props => props.open ? '84vw' : '93vw'};
         justify-self: center;
         transition: .3s ease;
     `
