@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { Flex } from '../GlobalStyles'
+import { Flex } from '../../GlobalStyles'
 
 
 const Profile = props => {
-
-
 
 	return <Flex column></Flex>
 

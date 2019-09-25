@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../GlobalStyles'
+import { colors } from '../../GlobalStyles'
 
 const drawerWidth = props => props.open ? '200px' : '70px'
 

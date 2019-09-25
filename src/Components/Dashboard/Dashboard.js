@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
-import AssignmentList, { ComingSoon, ColdOutreach } from '../../Assignments'
-import Profile from '../../Profile'
-import Endorsement from '../../EndorsementChecklist'
-import { MainListItems, SecondaryListItems, Top } from '../ListItems'
-import Calendar from '../../Calendar'
-import Feedback from '../../Feedback'
-import { Content, Drawer } from '../styles'
+
+import { MainListItems, SecondaryListItems, Top } from './ListItems'
+import Calendar from '../Calendar'
+import Feedback from '../Feedback'
+
 import { colors } from '../../GlobalStyles'
+import { Content, Drawer } from './styles'
 
 const Dashboard = props => {
 
@@ -47,12 +46,10 @@ const Dashboard = props => {
 
 		<Content open={open}>
 			<Switch>
-				<Route path='/dashboard/profile' component={Profile} />
-				<Route path='/dashboard/assignments' component={AssignmentList} />
+				<Route path='/dashboard/profile' />
+				<Route path='/dashboard/assignments' />
 				<Route path='/dashboard/calendar' component={Calendar} />
-				<Route path='/dashboard/endorsement' component={Endorsement} />
-				<Route path='/dashboard/cold-outreach' component={ColdOutreach} />
-				<Route path='/dashboard/coming-soon' component={ComingSoon} />
+				<Route path='/dashboard/endorsement' />
 				<Route path='/dashboard/feedback' component={Feedback} />
 			</Switch>
 

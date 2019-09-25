@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 import EmailModal from './Email'
 import { register, login, bsLogin, bsRedirect } from "../../Actions"
-import { colors } from '../GlobalStyles'
+import { colors } from '../../GlobalStyles'
 import { Login, SignInButton, LogoImg, LinkButton, ToP } from './styles'
 import Logo from '../Images/logo.png'
 

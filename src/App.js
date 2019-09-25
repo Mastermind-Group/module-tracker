@@ -7,7 +7,7 @@ import { faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, 
 import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
-import Global, { Flex } from './Components/GlobalStyles'
+import Global, { Flex } from './GlobalStyles'
 
 const App = _ => {
 
