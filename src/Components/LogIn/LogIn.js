@@ -17,10 +17,12 @@ function LogIn(props) {
     console.log('Props_User', props.user)
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
       props.bsLogin(props.blockstackConfig)
-    if (props.bsUser) props.bsUser ?
+
+    if (props.user) props.bsUser ?
       props.login(props.user) :
       props.register(props.user)
-  }, [props.user])
+
+  }, [props.user, props.bsUser])
 
   if (props.loggingIn) return (
 
