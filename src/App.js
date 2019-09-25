@@ -16,7 +16,7 @@ const App = _ => {
 
   return (
 
-    <Flex container>
+    <Flex global>
       <Global />
       <Switch>
 

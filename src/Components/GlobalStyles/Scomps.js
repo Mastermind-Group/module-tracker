@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { buttonSize, colors } from './variables'
 
-const Flex = styled.div`
+export const Flex = styled.div`
         display: flex;
         background: ${
     props =>
@@ -28,9 +28,9 @@ const Flex = styled.div`
                             'center'
     };
         flex-direction: ${props => props.column ? 'column' : 'row'};
-        width: 100%;
+        width: ${props => props.control ? props.control + '%' : '100%'};
         margin: 0 auto;
-        ${props => props.container && 'height: 100vh'};
+        ${props => props.global && 'height: 100vh'};
 `,
 
     Button = styled.button`
@@ -66,9 +66,7 @@ const Flex = styled.div`
             cursor: ${props => props.active ? 'default' : 'pointer'};
             transition: .4s;
         }
-`
+`,
+    Grid = styled.div`
 
-export {
-    Flex,
-    Button,
-}
+    `

@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/styles'
+import styled from 'styled-components'
+import { colors } from '../GlobalStyles'
 
-const useStyles = makeStyles(theme => ({
-    root: {}
-}))
-
-export { useStyles }
+export const Item = styled.div`
+    padding: 10px;
+    margin: 5px;
+`
