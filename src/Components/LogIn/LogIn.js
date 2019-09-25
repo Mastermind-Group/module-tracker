@@ -14,6 +14,7 @@ function LogIn(props) {
   const [isEmail, setIsEmail] = useState(false)
 
   useEffect(_ => {
+    console.log('Props_User', props.user)
     if (props.blockstackConfig.isSignInPending() && !props.blockstackConfig.isUserSignedIn())
       props.bsLogin(props.blockstackConfig)
     if (props.bsUser) props.bsUser ?
