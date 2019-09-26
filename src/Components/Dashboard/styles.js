@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../GlobalStyles'
+import { colors } from '../../GlobalStyles'
 
 const drawerWidth = props => props.open ? '200px' : '70px'
 
@@ -15,7 +15,7 @@ export const GlobalTop = styled.div`
         justify-content: space-between;
         min-height: 50px;
         background: whitesmoke;
-        padding: 8px 20px 8px 5px;
+        padding: 0 20px 5px 5px;
         width: 100%;
         border-bottom: 1px solid ${colors.accent};
     `,
@@ -66,7 +66,7 @@ export const GlobalTop = styled.div`
         font-family: 'Great Vibes', cursive;
 
         img {
-            width: 40px;
+            width: 50px;
             margin: 0;
             transform: translate(0, -5px);
         }
@@ -84,4 +84,37 @@ export const GlobalTop = styled.div`
         width: ${props => props.open ? '84vw' : '93vw'};
         justify-self: center;
         transition: .3s ease;
+    `,
+    Avatar = styled.img`
+        width: 50px;
+        align-self: center;
+    `,
+    ProfileMenu = styled.div`
+        position: absolute;
+        z-index: 500;
+        display: ${props => props.visible ? 'flex' : 'none'};
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background: whitesmoke;
+        padding: 15px;
+        width: max-content;
+        transform:  translate(-27.5px, 5px);
+        border: 1px solid ${colors.accent};
+        border-radius: 5px;
+        box-shadow: 2.5px 3px #00000055;
+
+        &::before {
+            content: '';
+            background: whitesmoke;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: -9px;
+            transform: rotate(45deg);
+            z-index: -500;
+            border-left: 1px solid ${colors.accent};
+            border-top: 1px solid ${colors.accent};
+            border-radius: 2px 0 50% 0;
+        }
     `

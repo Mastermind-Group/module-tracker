@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { GlobalTop, IconButton, GlobalHeader, Avatar } from '../styles'
+import Dropdown from './Dropdown'
 import avatar from '../../Images/avataaars.png'
-import { GlobalTop, IconButton, GlobalHeader } from '../styles'
 import Logo from '../../Images/logo.png'
 
 
 export default props => {
+
+    const [visible, setVisible] = useState(false)
 
     return <GlobalTop>
         <IconButton open>
@@ -17,19 +21,13 @@ export default props => {
 
         <GlobalHeader><img src={Logo} alt="Leaf" /> Element Learning</GlobalHeader>
 
-        {/* <IconButton open>
-            <FontAwesomeIcon icon='bell' />
-        </IconButton> */}
-
-        <img
-            alt="Avatar"
-            src={avatar}
-            style={{
-                height: '35px',
-                width: '35px',
-                alignSelf: 'right',
-            }}
-        />
+        <IconButton onClick={_ => setVisible(!visible)}>
+            <Avatar
+                alt="Avatar"
+                src={avatar}
+            />
+            <Dropdown visible={visible} />
+        </IconButton>
 
     </GlobalTop>
 

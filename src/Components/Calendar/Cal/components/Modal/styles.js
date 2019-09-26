@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../../../GlobalStyles'
+import { colors } from '../../../../../GlobalStyles'
 
 export const ModalContainer = styled.div`
     display: ${props => props.show ? 'flex' : 'none'};

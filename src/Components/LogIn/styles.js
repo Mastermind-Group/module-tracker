@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { buttonSize, colors } from '../GlobalStyles'
+import { buttonSize, colors } from '../../GlobalStyles'
 
 const Login = styled.div`
         display: flex;

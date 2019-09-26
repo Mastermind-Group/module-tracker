@@ -6,7 +6,7 @@ import blockstack from 'blockstack'
 import Cookies from 'js-cookie'
 
 import { IconButton } from '../styles'
-import { colors } from '../../GlobalStyles'
+import { colors } from '../../../GlobalStyles'
 
 
 export default props => {

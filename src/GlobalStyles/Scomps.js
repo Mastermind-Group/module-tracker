@@ -28,7 +28,8 @@ export const Flex = styled.div`
                             'center'
     };
         flex-direction: ${props => props.column ? 'column' : 'row'};
-        width: ${props => props.control ? props.control + '%' : '100%'};
+        ${props => props.wrap && 'flex-wrap: wrap;'}
+        width: ${props => props.control ? props.control : '100%'};
         margin: 0 auto;
         ${props => props.global && 'height: 100vh'};
 `,

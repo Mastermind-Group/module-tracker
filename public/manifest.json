@@ -1,12 +1,13 @@
 {
-  "short_name": "Element",
   "name": "Element Learning",
   "icons": [
     {
-      "src": "favicon.png"
+      "src": "https://module-tracker.netlify.com/static/media/logo.c3400062.png",
+      "sizes": "200x200",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

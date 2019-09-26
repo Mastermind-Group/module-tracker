@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../../../GlobalStyles'
+import { colors } from '../../../../../GlobalStyles'
 
 export const Form = styled.form`
     display: ${props => props.selectDate ? 'flex' : 'none'};
