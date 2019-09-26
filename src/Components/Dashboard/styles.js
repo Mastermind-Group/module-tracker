@@ -86,4 +86,33 @@ export const GlobalTop = styled.div`
     Avatar = styled.img`
         width: 50px;
         align-self: center;
+    `,
+    ProfileMenu = styled.div`
+        position: absolute;
+        z-index: 500;
+        display: ${props => props.visible ? 'flex' : 'none'};
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background: whitesmoke;
+        padding: 15px;
+        width: max-content;
+        transform:  translate(-27.5px, 5px);
+        border: 1px solid ${colors.accent};
+        border-radius: 5px;
+        box-shadow: 2.5px 3px #00000055;
+
+        &::before {
+            content: '';
+            background: whitesmoke;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: -9px;
+            transform: rotate(45deg);
+            z-index: -500;
+            border-left: 1px solid ${colors.accent};
+            border-top: 1px solid ${colors.accent};
+            border-radius: 2px 0 50% 0;
+        }
     `
