@@ -11,7 +11,10 @@ import Global, { Flex } from './GlobalStyles'
 
 const App = _ => {
 
-  window.addEventListener('beforeunload', () => Cookies.remove('location'))
+  window.addEventListener('beforeunload', () => {
+    Cookies.remove('location')
+    localStorage.clear()
+  })
   library.add(faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, faBriefcase, faIdBadge, faCommentAlt, faSignOutAlt)
 
   return (
