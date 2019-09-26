@@ -62,11 +62,13 @@ export const GlobalTop = styled.div`
         color: ${colors.primary};
         margin: 8px 0;
         font-weight: bolder;
+        font-size: 3.5rem;
+        font-family: 'Great Vibes', cursive;
 
         img {
             width: 50px;
             margin: 0;
-            transform: translate(0, -2.5px);
+            transform: translate(0, -5px);
         }
     `,
     Content = styled.main`

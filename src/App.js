@@ -6,10 +6,13 @@ import { faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, 
 
 import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
+import { connect } from 'react-redux'
 
 import Global, { Flex } from './GlobalStyles'
 
-const App = _ => {
+const App = props => {
+
+  console.log(props)
 
   window.addEventListener('beforeunload', () => Cookies.remove('location'))
   library.add(faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, faBriefcase, faIdBadge, faCommentAlt, faSignOutAlt)
@@ -42,4 +45,6 @@ const App = _ => {
   )
 }
 
-export default App
+const mapStateToProps = state => ({ ...state })
+
+export default connect(mapStateToProps)(App)
