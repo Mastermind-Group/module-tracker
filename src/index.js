@@ -7,22 +7,13 @@ import thunk from 'redux-thunk'
 import rootReducer from './Reducers/rootReducer'
 import logger from 'redux-logger'
 import App from './App'
-import JssProvider from 'react-jss/lib/JssProvider'
-import { createGenerateClassName } from '@material-ui/core/styles'
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
-
-const generateClassName = createGenerateClassName({
-    dangerouslyUseGlobalCSS: false,
-    productionPrefix: 'c',
-})
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <JssProvider generateClassName={generateClassName}>
-                <App />
-            </JssProvider>
+            <App />
         </Router>
     </Provider>,
     document.getElementById('root')
