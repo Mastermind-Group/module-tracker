@@ -2,11 +2,9 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import decode from 'jwt-decode'
+import blockstack from 'blockstack'
+
 import Dashboard from './Dashboard'
-import { initBlockstack } from 'react-blockstack'
-import { AppConfig } from 'blockstack'
-
-
 
 const PrivateRoute = ({ ...rest }) => {
 
@@ -15,9 +13,7 @@ const PrivateRoute = ({ ...rest }) => {
 
     if (!token || Date.now() > decoded.exp * 1000) {
         Cookies.set('location', rest.location.pathname)
-        localStorage.clear()
-        const appConfig = new AppConfig(["store_write"])
-        initBlockstack(appConfig)
+        blockstack.signUserOut()
     }
 
     return (
@@ -29,6 +25,5 @@ const PrivateRoute = ({ ...rest }) => {
     )
 
 }
-
 
 export default PrivateRoute

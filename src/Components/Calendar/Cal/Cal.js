@@ -6,7 +6,7 @@ import Month from './components/Month'
 const events = [
     {
         name: 'Something',
-        date: moment('2019-08-23').format('YYYY-MM-DD')
+        date: moment(Date.now()).add(1, 'day').format('YYYY-MM-DD')
     }
 ]
 
