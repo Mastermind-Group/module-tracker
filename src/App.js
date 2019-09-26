@@ -1,19 +1,22 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, faBriefcase, faIdBadge, faCommentAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 import { LogIn, Register } from './Components/LogIn'
 import PrivateRoute from './Components/PrivateRoute'
 
-import Global, { Flex } from './Components/GlobalStyles'
+import Global, { Flex } from './GlobalStyles'
 
-const App = props => {
+const App = _ => {
 
   window.addEventListener('beforeunload', () => Cookies.remove('location'))
+  library.add(faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, faBriefcase, faIdBadge, faCommentAlt, faSignOutAlt)
 
   return (
 
-    <Flex column container>
+    <Flex global>
       <Global />
       <Switch>
 

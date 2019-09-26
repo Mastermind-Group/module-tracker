@@ -2,7 +2,7 @@ import React, { useState, Fragment } from 'react'
 import { useForm } from 'customhooks'
 
 import { momentDate } from '../../utils'
-import './DatePicker.scss'
+import { Form, Button } from './styles'
 
 export default function DatePicker(props) {
 
@@ -17,11 +17,8 @@ export default function DatePicker(props) {
 
     return (
         <Fragment>
-            <form
-                className='DatePicker'
-                onSubmit={submit}
-                style={{ display: selectDate ? 'flex' : 'none' }}
-            >
+
+            <Form onSubmit={submit} selectDate={selectDate}>
                 <input
                     type={props.week ? 'datetime-local' : 'date'}
                     name='date'
@@ -29,12 +26,14 @@ export default function DatePicker(props) {
                     defaultValue={momentDate(props.currentDate)}
                     id='dp'
                 />
-                <button type="submit">Submit</button>
-            </form>
-            <button
+                <button>Submit</button>
+            </Form>
+
+            <Button
                 onClick={() => setSelectDate(!selectDate)}
-                style={{ display: selectDate ? 'none' : 'block' }}
-            >Change Date</button>
+                selectDate={selectDate}
+            >Change Date</Button>
+
         </Fragment>
     )
 }
