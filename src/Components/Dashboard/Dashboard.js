@@ -29,9 +29,8 @@ const Dashboard = props => {
 			<MainListItems open={open} />
 
 			<hr style={{
-				color: colors.accent,
 				backgroundColor: colors.accent,
-				height: 2,
+				height: 1,
 				width: '120%',
 				marginLeft: -10,
 			}} />

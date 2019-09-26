@@ -15,7 +15,7 @@ export const GlobalTop = styled.div`
         justify-content: space-between;
         min-height: 50px;
         background: whitesmoke;
-        padding: 8px 20px 8px 5px;
+        padding: 0 20px 5px 5px;
         width: 100%;
         border-bottom: 1px solid ${colors.accent};
     `,
@@ -64,7 +64,7 @@ export const GlobalTop = styled.div`
         font-weight: bolder;
 
         img {
-            width: 40px;
+            width: 50px;
             margin: 0;
             transform: translate(0, -2.5px);
         }
@@ -82,4 +82,8 @@ export const GlobalTop = styled.div`
         width: ${props => props.open ? '84vw' : '93vw'};
         justify-self: center;
         transition: .3s ease;
+    `,
+    Avatar = styled.img`
+        width: 50px;
+        align-self: center;
     `
