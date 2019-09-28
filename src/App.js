@@ -12,8 +12,6 @@ import Global, { Flex } from './GlobalStyles'
 
 const App = props => {
 
-  console.log(props)
-
   window.addEventListener('beforeunload', () => Cookies.remove('location'))
   library.add(faBars, faChevronLeft, faBell, faHome, faClipboardList, faCalendarAlt, faBriefcase, faIdBadge, faCommentAlt, faSignOutAlt)
 

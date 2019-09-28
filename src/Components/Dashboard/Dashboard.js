@@ -5,6 +5,7 @@ import CookieConsent from 'react-cookie-consent'
 import { MainListItems, SecondaryListItems, Top } from './ListItems'
 import Calendar from '../Calendar'
 import Feedback from '../Feedback'
+import Profile from '../Profile'
 
 import { colors } from '../../GlobalStyles'
 import { Content, Drawer } from './styles'
@@ -45,7 +46,7 @@ const Dashboard = props => {
 
 		<Content open={open}>
 			<Switch>
-				<Route path='/dashboard/profile' />
+				<Route path='/dashboard/profile' component={Profile} />
 				<Route path='/dashboard/assignments' />
 				<Route path='/dashboard/calendar' component={Calendar} />
 				<Route path='/dashboard/endorsement' />

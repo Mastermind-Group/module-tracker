@@ -1,8 +1,8 @@
 import React from 'react'
-import { Flex } from '../../GlobalStyles'
+import { ProfileContainer } from './styles'
 
 const Profile = () => {
-    return <Flex></Flex>
+    return <ProfileContainer column startJ>Profile</ProfileContainer>
 }
 
 export default Profile
