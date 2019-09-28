@@ -65,9 +65,22 @@ const login = creds => dispatch => {
 
 const bsRedirect = bs => dispatch => {
 
-	dispatch({ type: BS_REQUEST })
+	if (bs.isUserSignedIn()) {
 
-	bs.redirectToSignIn()
+		const user = {
+			username: bs.username,
+			password: bs.decentralizedID
+		}
+
+		dispatch({ type: BS, payload: user })
+
+	} else {
+
+		dispatch({ type: BS_REQUEST })
+
+		bs.redirectToSignIn()
+
+	}
 
 }
 
