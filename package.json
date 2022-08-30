@@ -13,7 +13,7 @@
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-blockstack": "^0.5.2",
